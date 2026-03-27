@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/src/PrimaryGeneratorAction.cc
-/// \brief Implementation of the B1::PrimaryGeneratorAction class
+/// \file NaI/src/PrimaryGeneratorAction.cc
+/// \brief Implementation of the NaI::PrimaryGeneratorAction class
 
 #include "PrimaryGeneratorAction.hh"
 
@@ -40,7 +40,7 @@
 
 
 
-namespace B1
+namespace NaI
 {
 
 	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -191,4 +191,4 @@ namespace B1
 
 	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}  // namespace B1
+}  // namespace NaI

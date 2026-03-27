@@ -24,15 +24,15 @@
 // ********************************************************************
 //
 //
-/// \file B1/src/EventAction.cc
-/// \brief Implementation of the B1::EventAction class
+/// \file NaI/src/EventAction.cc
+/// \brief Implementation of the NaI::EventAction class
 
 #include "EventAction.hh"
 #include "G4AnalysisManager.hh"
 #include "G4SystemOfUnits.hh"
 #include "RunAction.hh"
 
-namespace B1
+namespace NaI
 {
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -61,4 +61,4 @@ void EventAction::EndOfEventAction(const G4Event*)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}  // namespace B1
+}  // namespace NaI

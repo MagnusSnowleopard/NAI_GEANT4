@@ -57,7 +57,7 @@ or you may omit the driver parameter and choose at run time:
 - by entry in "~/.g4session"
 - by build flags.
 - Note: This feature is not allowed in batch mode.
-For further information see "examples/basic/B1/exampleB1.cc"
+For further information see "examples/basic/NaI/NaI.cc"
 and "vis.mac".
 
 Registering model factories...

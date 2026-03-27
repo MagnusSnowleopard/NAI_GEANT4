@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/include/SteppingAction.hh
-/// \brief Definition of the B1::SteppingAction class
+/// \file NaI/include/SteppingAction.hh
+/// \brief Definition of the NaI::SteppingAction class
 
 #ifndef B1SteppingAction_h
 #define B1SteppingAction_h 1
@@ -35,7 +35,7 @@
 class G4LogicalVolume;
 class G4Step;
 
-namespace B1
+namespace NaI
 {
 
 class EventAction;
@@ -56,7 +56,7 @@ class SteppingAction : public G4UserSteppingAction
 //    G4LogicalVolume* fScoringVolume = nullptr;
 };
 
-}  // namespace B1
+}  // namespace NaI
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

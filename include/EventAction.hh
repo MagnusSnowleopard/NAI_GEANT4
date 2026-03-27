@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/include/EventAction.hh
-/// \brief Definition of the B1::EventAction class
+/// \file NaI/include/EventAction.hh
+/// \brief Definition of the NaI::EventAction class
 
 #ifndef B1EventAction_h
 #define B1EventAction_h 1
@@ -35,7 +35,7 @@
 
 class G4Event;
 
-namespace B1
+namespace NaI
 {
 
 class RunAction;
@@ -58,7 +58,7 @@ class EventAction : public G4UserEventAction
     G4double fEdep = 0.;
 };
 
-}  // namespace B1
+}  // namespace NaI
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
