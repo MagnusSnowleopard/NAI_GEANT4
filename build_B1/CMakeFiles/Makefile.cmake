@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "../CMakeLists.txt"
+  "../NaI.in"
+  "../NaI.out"
   "CMakeFiles/3.22.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
-  "../exampleB1.in"
-  "../exampleB1.out"
   "../init_vis.mac"
   "../run1.mac"
   "../vis.mac"
@@ -121,8 +121,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "exampleB1.in"
-  "exampleB1.out"
+  "NaI.in"
+  "NaI.out"
   "init_vis.mac"
   "run1.mac"
   "vis.mac"
@@ -131,5 +131,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/exampleB1.dir/DependInfo.cmake"
+  "CMakeFiles/NaI.dir/DependInfo.cmake"
   )

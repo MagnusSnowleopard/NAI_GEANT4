@@ -117,48 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named exampleB1
+# Target rules for targets named NaI
 
 # Build rule for target.
-exampleB1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exampleB1
-.PHONY : exampleB1
+NaI: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 NaI
+.PHONY : NaI
 
 # fast build rule for target.
-exampleB1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/build
-.PHONY : exampleB1/fast
+NaI/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/build
+.PHONY : NaI/fast
 
-exampleB1.o: exampleB1.cc.o
-.PHONY : exampleB1.o
+NaI.o: NaI.cc.o
+.PHONY : NaI.o
 
 # target to build an object file
-exampleB1.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/exampleB1.cc.o
-.PHONY : exampleB1.cc.o
+NaI.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/NaI.cc.o
+.PHONY : NaI.cc.o
 
-exampleB1.i: exampleB1.cc.i
-.PHONY : exampleB1.i
+NaI.i: NaI.cc.i
+.PHONY : NaI.i
 
 # target to preprocess a source file
-exampleB1.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/exampleB1.cc.i
-.PHONY : exampleB1.cc.i
+NaI.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/NaI.cc.i
+.PHONY : NaI.cc.i
 
-exampleB1.s: exampleB1.cc.s
-.PHONY : exampleB1.s
+NaI.s: NaI.cc.s
+.PHONY : NaI.s
 
 # target to generate assembly for a file
-exampleB1.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/exampleB1.cc.s
-.PHONY : exampleB1.cc.s
+NaI.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/NaI.cc.s
+.PHONY : NaI.cc.s
 
 src/ActionInitialization.o: src/ActionInitialization.cc.o
 .PHONY : src/ActionInitialization.o
 
 # target to build an object file
 src/ActionInitialization.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/ActionInitialization.cc.o
 .PHONY : src/ActionInitialization.cc.o
 
 src/ActionInitialization.i: src/ActionInitialization.cc.i
@@ -166,7 +166,7 @@ src/ActionInitialization.i: src/ActionInitialization.cc.i
 
 # target to preprocess a source file
 src/ActionInitialization.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/ActionInitialization.cc.i
 .PHONY : src/ActionInitialization.cc.i
 
 src/ActionInitialization.s: src/ActionInitialization.cc.s
@@ -174,7 +174,7 @@ src/ActionInitialization.s: src/ActionInitialization.cc.s
 
 # target to generate assembly for a file
 src/ActionInitialization.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/ActionInitialization.cc.s
 .PHONY : src/ActionInitialization.cc.s
 
 src/DetectorConstruction.o: src/DetectorConstruction.cc.o
@@ -182,7 +182,7 @@ src/DetectorConstruction.o: src/DetectorConstruction.cc.o
 
 # target to build an object file
 src/DetectorConstruction.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/DetectorConstruction.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o
 .PHONY : src/DetectorConstruction.cc.o
 
 src/DetectorConstruction.i: src/DetectorConstruction.cc.i
@@ -190,7 +190,7 @@ src/DetectorConstruction.i: src/DetectorConstruction.cc.i
 
 # target to preprocess a source file
 src/DetectorConstruction.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/DetectorConstruction.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/DetectorConstruction.cc.i
 .PHONY : src/DetectorConstruction.cc.i
 
 src/DetectorConstruction.s: src/DetectorConstruction.cc.s
@@ -198,7 +198,7 @@ src/DetectorConstruction.s: src/DetectorConstruction.cc.s
 
 # target to generate assembly for a file
 src/DetectorConstruction.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/DetectorConstruction.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/DetectorConstruction.cc.s
 .PHONY : src/DetectorConstruction.cc.s
 
 src/EventAction.o: src/EventAction.cc.o
@@ -206,7 +206,7 @@ src/EventAction.o: src/EventAction.cc.o
 
 # target to build an object file
 src/EventAction.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/EventAction.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/EventAction.cc.o
 .PHONY : src/EventAction.cc.o
 
 src/EventAction.i: src/EventAction.cc.i
@@ -214,7 +214,7 @@ src/EventAction.i: src/EventAction.cc.i
 
 # target to preprocess a source file
 src/EventAction.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/EventAction.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/EventAction.cc.i
 .PHONY : src/EventAction.cc.i
 
 src/EventAction.s: src/EventAction.cc.s
@@ -222,7 +222,7 @@ src/EventAction.s: src/EventAction.cc.s
 
 # target to generate assembly for a file
 src/EventAction.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/EventAction.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/EventAction.cc.s
 .PHONY : src/EventAction.cc.s
 
 src/PrimaryGeneratorAction.o: src/PrimaryGeneratorAction.cc.o
@@ -230,7 +230,7 @@ src/PrimaryGeneratorAction.o: src/PrimaryGeneratorAction.cc.o
 
 # target to build an object file
 src/PrimaryGeneratorAction.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/PrimaryGeneratorAction.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o
 .PHONY : src/PrimaryGeneratorAction.cc.o
 
 src/PrimaryGeneratorAction.i: src/PrimaryGeneratorAction.cc.i
@@ -238,7 +238,7 @@ src/PrimaryGeneratorAction.i: src/PrimaryGeneratorAction.cc.i
 
 # target to preprocess a source file
 src/PrimaryGeneratorAction.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/PrimaryGeneratorAction.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.i
 .PHONY : src/PrimaryGeneratorAction.cc.i
 
 src/PrimaryGeneratorAction.s: src/PrimaryGeneratorAction.cc.s
@@ -246,7 +246,7 @@ src/PrimaryGeneratorAction.s: src/PrimaryGeneratorAction.cc.s
 
 # target to generate assembly for a file
 src/PrimaryGeneratorAction.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/PrimaryGeneratorAction.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.s
 .PHONY : src/PrimaryGeneratorAction.cc.s
 
 src/RunAction.o: src/RunAction.cc.o
@@ -254,7 +254,7 @@ src/RunAction.o: src/RunAction.cc.o
 
 # target to build an object file
 src/RunAction.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/RunAction.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/RunAction.cc.o
 .PHONY : src/RunAction.cc.o
 
 src/RunAction.i: src/RunAction.cc.i
@@ -262,7 +262,7 @@ src/RunAction.i: src/RunAction.cc.i
 
 # target to preprocess a source file
 src/RunAction.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/RunAction.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/RunAction.cc.i
 .PHONY : src/RunAction.cc.i
 
 src/RunAction.s: src/RunAction.cc.s
@@ -270,7 +270,7 @@ src/RunAction.s: src/RunAction.cc.s
 
 # target to generate assembly for a file
 src/RunAction.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/RunAction.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/RunAction.cc.s
 .PHONY : src/RunAction.cc.s
 
 src/SteppingAction.o: src/SteppingAction.cc.o
@@ -278,7 +278,7 @@ src/SteppingAction.o: src/SteppingAction.cc.o
 
 # target to build an object file
 src/SteppingAction.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/SteppingAction.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/SteppingAction.cc.o
 .PHONY : src/SteppingAction.cc.o
 
 src/SteppingAction.i: src/SteppingAction.cc.i
@@ -286,7 +286,7 @@ src/SteppingAction.i: src/SteppingAction.cc.i
 
 # target to preprocess a source file
 src/SteppingAction.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/SteppingAction.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/SteppingAction.cc.i
 .PHONY : src/SteppingAction.cc.i
 
 src/SteppingAction.s: src/SteppingAction.cc.s
@@ -294,7 +294,7 @@ src/SteppingAction.s: src/SteppingAction.cc.s
 
 # target to generate assembly for a file
 src/SteppingAction.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exampleB1.dir/build.make CMakeFiles/exampleB1.dir/src/SteppingAction.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NaI.dir/build.make CMakeFiles/NaI.dir/src/SteppingAction.cc.s
 .PHONY : src/SteppingAction.cc.s
 
 # Help Target
@@ -305,10 +305,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... exampleB1"
-	@echo "... exampleB1.o"
-	@echo "... exampleB1.i"
-	@echo "... exampleB1.s"
+	@echo "... NaI"
+	@echo "... NaI.o"
+	@echo "... NaI.i"
+	@echo "... NaI.s"
 	@echo "... src/ActionInitialization.o"
 	@echo "... src/ActionInitialization.i"
 	@echo "... src/ActionInitialization.s"

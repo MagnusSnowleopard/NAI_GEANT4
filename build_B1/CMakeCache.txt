@@ -154,7 +154,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=B1
+CMAKE_PROJECT_NAME:STATIC=NaI
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -226,6 +226,15 @@ EXPAT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libexpat.so
 
 //The directory containing a CMake configuration file for Geant4.
 Geant4_DIR:PATH=/home/rd/Packages/GEANT4/geant_install/lib/cmake/Geant4
+
+//Value Computed by CMake
+NaI_BINARY_DIR:STATIC=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/B1/build_B1
+
+//Value Computed by CMake
+NaI_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+NaI_SOURCE_DIR:STATIC=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/B1
 
 //Path to a file.
 OPENGL_EGL_INCLUDE_DIR:PATH=/usr/include
