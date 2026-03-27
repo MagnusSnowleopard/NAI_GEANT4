@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/src/DetectorConstruction.cc
-/// \brief Implementation of the B1::DetectorConstruction class
+/// \file NaI/src/DetectorConstruction.cc
+/// \brief Implementation of the NaI::DetectorConstruction class
 
 #include "DetectorConstruction.hh"
 #include "G4Tubs.hh"
@@ -43,7 +43,7 @@
 #include "G4Colour.hh"
 
 
-namespace B1
+namespace NaI
 {
 
 	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -256,4 +256,4 @@ namespace B1
 
 	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}  // namespace B1
+}  // namespace NaI

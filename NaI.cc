@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file exampleB1.cc
-/// \brief Main program of the B1 example
+/// \file NaI.cc
+/// \brief Main program of the NaI simulation
 
 #include "ActionInitialization.hh"
 #include "DetectorConstruction.hh"
@@ -40,7 +40,7 @@
 #include "G4VisExecutive.hh"
 // #include "Randomize.hh"
 
-using namespace B1;
+using namespace NaI;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

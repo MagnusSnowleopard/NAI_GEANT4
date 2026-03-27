@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/src/SteppingAction.cc
-/// \brief Implementation of the B1::SteppingAction class
+/// \file NaI/src/SteppingAction.cc
+/// \brief Implementation of the NaI::SteppingAction class
 
 #include "SteppingAction.hh"
 
@@ -47,7 +47,7 @@
 #include "G4Triton.hh"
 #include "G4SystemOfUnits.hh"
 
-namespace B1
+namespace NaI
 {
 
 
@@ -109,4 +109,4 @@ namespace B1
 
 		}
 	}
-}// namespace B1
+}// namespace NaI

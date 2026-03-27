@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/include/PrimaryGeneratorAction.hh
-/// \brief Definition of the B1::PrimaryGeneratorAction class
+/// \file NaI/include/PrimaryGeneratorAction.hh
+/// \brief Definition of the NaI::PrimaryGeneratorAction class
 
 #ifndef B1PrimaryGeneratorAction_h
 #define B1PrimaryGeneratorAction_h 1
@@ -37,7 +37,7 @@ class G4ParticleGun;
 class G4Event;
 class G4Box;
 
-namespace B1
+namespace NaI
 {
 
 /// The primary generator action class with particle gun.
@@ -69,7 +69,7 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     double fNeutronRateSum;
 };
 
-}  // namespace B1
+}  // namespace NaI
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

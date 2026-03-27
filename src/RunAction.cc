@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/src/RunAction.cc
-/// \brief Implementation of the B1::RunAction class
+/// \file NaI/src/RunAction.cc
+/// \brief Implementation of the NaI::RunAction class
 
 #include "RunAction.hh"
 
@@ -42,7 +42,7 @@
 #include "G4UnitsTable.hh"
 #include "G4AnalysisManager.hh"
 
-namespace B1
+namespace NaI
 {
 
 	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -66,7 +66,7 @@ namespace B1
 		G4double xmin = 0.;
 		G4double xmax = 16384.;
 
-		analysisManager->CreateH1("Edep",
+		analysisManager->CreateH1("gamma-spectra",
 				"Energy deposited in crystal",
 				nbins,xmin,xmax);
 
@@ -119,4 +119,4 @@ namespace B1
 	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}  // namespace B1
+}  // namespace NaI

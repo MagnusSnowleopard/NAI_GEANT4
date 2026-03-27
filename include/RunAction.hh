@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/include/RunAction.hh
-/// \brief Definition of the B1::RunAction class
+/// \file NaI/include/RunAction.hh
+/// \brief Definition of the NaI::RunAction class
 
 #ifndef B1RunAction_h
 #define B1RunAction_h 1
@@ -37,7 +37,7 @@
 
 class G4Run;
 
-namespace B1
+namespace NaI
 {
 
 /// Run action class
@@ -59,6 +59,6 @@ class RunAction : public G4UserRunAction
     
 };
 
-}  // namespace B1
+}  // namespace NaI
 
 #endif

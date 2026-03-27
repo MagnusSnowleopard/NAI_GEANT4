@@ -24,8 +24,8 @@
 // ********************************************************************
 //
 //
-/// \file B1/src/ActionInitialization.cc
-/// \brief Implementation of the B1::ActionInitialization class
+/// \file NaI/src/ActionInitialization.cc
+/// \brief Implementation of the NaI::ActionInitialization class
 
 #include "ActionInitialization.hh"
 
@@ -34,7 +34,7 @@
 #include "RunAction.hh"
 #include "SteppingAction.hh"
 
-namespace B1
+namespace NaI
 {
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -64,4 +64,4 @@ void ActionInitialization::Build() const
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}  // namespace B1
+}  // namespace NaI
