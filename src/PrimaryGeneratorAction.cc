@@ -142,17 +142,37 @@ namespace NaI
 
 		G4ThreeVector dir(dirx,diry,dirz);
 
-		// Sample source position uniformly across the tungsten puck face.
+		// Sample source position from a circular 2D Gaussian across the tungsten puck face.
+		// The Gaussian is centered on axis and truncated at the puck radius.
 		// Puck geometry: diameter = 25.4 mm, thickness = 6 mm, centered at z = +3.5 mm.
 		// Emit from the +Z face and point into the puck (-Z direction).
 		G4double puckRadius = 0.5 * 25.4 * mm;
 		G4double puckCenterZ = 3.5 * mm;
 		G4double puckHalfThickness = 0.5 * 6.0 * mm;
 		G4double sourceZ = puckCenterZ + puckHalfThickness;
-		G4double r = puckRadius * std::sqrt(G4UniformRand());
-		G4double phiPos = 2. * CLHEP::pi * G4UniformRand();
-		G4double sourceX = r * std::cos(phiPos);
-		G4double sourceY = r * std::sin(phiPos);
+		G4double sigmaXY = puckRadius / 3.0;
+
+		G4double sourceX = 0.;
+		G4double sourceY = 0.;
+		G4bool accepted = false;
+		while(!accepted){
+			G4double u1 = G4UniformRand();
+			G4double u2 = G4UniformRand();
+			if(u1 <= 0.) continue;
+
+			// Box-Muller transform for independent Gaussian x/y samples.
+			G4double rho = std::sqrt(-2.0 * std::log(u1));
+			G4double theta = 2.0 * CLHEP::pi * u2;
+			G4double gx = rho * std::cos(theta);
+			G4double gy = rho * std::sin(theta);
+
+			sourceX = sigmaXY * gx;
+			sourceY = sigmaXY * gy;
+
+			if((sourceX*sourceX + sourceY*sourceY) <= (puckRadius*puckRadius)){
+				accepted = true;
+			}
+		}
 		G4ThreeVector sourcePos(sourceX, sourceY, sourceZ);
 
 		//sample photon energy 

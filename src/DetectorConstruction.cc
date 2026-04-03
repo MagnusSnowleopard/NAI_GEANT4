@@ -265,19 +265,16 @@ namespace NaI
 		visCLYC->SetVisibility(true);
 		logicCrystal->SetVisAttributes(visCLYC);
 		
-		auto visChamber = new G4VisAttributes(G4Colour(0.,1.,0.,0.2));
+		auto visChamber = new G4VisAttributes(G4Colour(0.,1.,0.));
 		visChamber->SetVisibility(true);
-		visChamber->SetForceWireframe(true);
 		logicChamber->SetVisAttributes(visChamber);
 
 		auto visVac = new G4VisAttributes();
 		visVac->SetVisibility(false);
 		logicVac->SetVisAttributes(visVac);
 
-		auto visAttenuator = new G4VisAttributes(G4Colour(1.0,0.8,0.0));
+		auto visAttenuator = new G4VisAttributes(G4Colour(0.4,0.4,0.6));
 		visAttenuator->SetVisibility(true);
-		visAttenuator->SetForceSolid(true);
-		visAttenuator->SetForceAuxEdgeVisible(true);
 		logicAttenuator->SetVisAttributes(visAttenuator);
 
 

@@ -14,19 +14,17 @@ Geometry is built in `NaI::DetectorConstruction`.
   - Diameter: **25.4 mm**
   - Thickness (z depth): **6.0 mm**
   - Center position: **z = +3.5 mm**
-  - Visualization: forced solid so the puck is clearly visible in the rendered model
 
 ## 2) Primary source and momentum cone
 
 Primary generation is implemented in `NaI::PrimaryGeneratorAction`.
 
 - A neutron and a gamma are generated each event.
-- Source position is sampled uniformly on the circular +Z face of the tungsten attenuation insert.
-- Emission direction is sampled in a cone around the inward face normal (−Z), so primaries are directed into the tungsten.
+- Emission direction is sampled in a cone around +Z.
 - The cone is defined by `thetaMax` (currently `1 deg`) and sampled isotropically in solid angle within that cone:
   - `cos(theta)` sampled uniformly between `cos(thetaMax)` and `1`
   - `phi` sampled uniformly from `0` to `2π`
-- This produces a cone-directed emission for both primaries, with cone angle measured from the inward surface normal.
+- This produces a forward-directed momentum cone for both primaries.
 
 ## 3) Secondary particle tracking and analysis
 
@@ -39,7 +37,7 @@ Secondary tracking and energy scoring are implemented in `NaI::SteppingAction` a
   - Alphas
   - Tritons
 
-Histograms are created and written in `NaI::RunAction` to `NaI.root`.
+Histograms are created and written in `NaI::RunAction` to `Clyc_neutron_response.root`.
 
 ## 4) Physics list
 
