@@ -127,7 +127,8 @@ namespace NaI
 
 	void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
 	{
-		//Make a momentum cone
+		// Make a momentum cone around the local inward surface normal (-Z)
+		// so emission is directed into the tungsten puck.
 		G4double thetaMax = 1.*deg;
 		G4double cosThetaMin = std::cos(thetaMax);
 		G4double cosTheta = 1. - G4UniformRand()*(1. - cosThetaMin);
@@ -137,10 +138,42 @@ namespace NaI
 
 		G4double dirx = sinTheta*std::cos(phi);
 		G4double diry = sinTheta*std::sin(phi);
-		G4double dirz = cosTheta;
+		G4double dirz = -cosTheta;
 
 		G4ThreeVector dir(dirx,diry,dirz);
 
+		// Sample source position from a circular 2D Gaussian across the tungsten puck face.
+		// The Gaussian is centered on axis and truncated at the puck radius.
+		// Puck geometry: diameter = 25.4 mm, thickness = 6 mm, centered at z = +3.5 mm.
+		// Emit from the +Z face and point into the puck (-Z direction).
+		G4double puckRadius = 0.5 * 25.4 * mm;
+		G4double puckCenterZ = 3.5 * mm;
+		G4double puckHalfThickness = 0.5 * 6.0 * mm;
+		G4double sourceZ = puckCenterZ + puckHalfThickness;
+		G4double sigmaXY = puckRadius / 3.0;
+
+		G4double sourceX = 0.;
+		G4double sourceY = 0.;
+		G4bool accepted = false;
+		while(!accepted){
+			G4double u1 = G4UniformRand();
+			G4double u2 = G4UniformRand();
+			if(u1 <= 0.) continue;
+
+			// Box-Muller transform for independent Gaussian x/y samples.
+			G4double rho = std::sqrt(-2.0 * std::log(u1));
+			G4double theta = 2.0 * CLHEP::pi * u2;
+			G4double gx = rho * std::cos(theta);
+			G4double gy = rho * std::sin(theta);
+
+			sourceX = sigmaXY * gx;
+			sourceY = sigmaXY * gy;
+
+			if((sourceX*sourceX + sourceY*sourceY) <= (puckRadius*puckRadius)){
+				accepted = true;
+			}
+		}
+		G4ThreeVector sourcePos(sourceX, sourceY, sourceZ);
 
 		//sample photon energy 
 		G4double randomPhoton = G4UniformRand() * fPhotonRateSum;
@@ -183,6 +216,8 @@ namespace NaI
 
 		fGunNeutron->SetParticleMomentumDirection(dir);
 		fGunGamma->SetParticleMomentumDirection(dir);
+		fGunNeutron->SetParticlePosition(sourcePos);
+		fGunGamma->SetParticlePosition(sourcePos);
 
 
 		fGunNeutron->GeneratePrimaryVertex(event);
