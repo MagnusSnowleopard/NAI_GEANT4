@@ -137,8 +137,8 @@ namespace NaI
 					0,                        //copy number
 					checkOverlaps);
 		
-		//define target chamber.
-		G4Material* steelMat = nist->FindOrBuildMaterial("G4_STAINLESS-STEEL");
+		// define target chamber (aluminum).
+		G4Material* chamberMat = nist->FindOrBuildMaterial("G4_Al");
 
 	
 		G4double chamberRadius = 0.5*7.6*cm;
@@ -147,22 +147,22 @@ namespace NaI
 
 		auto vaccumMat = nist->FindOrBuildMaterial("G4_Galactic");
 
-		auto sschamber = new G4Tubs("ssChamber",
+		auto alChamber = new G4Tubs("alChamber",
 				chamberInnerRadius,
 				chamberRadius,
 				chamberHeight,
 				0.*deg,
 				360.*deg);
 
-		auto sslogicChamber = 
-			new G4LogicalVolume(sschamber, steelMat, "ChamberLV");
+		auto logicChamber = 
+			new G4LogicalVolume(alChamber, chamberMat, "ChamberLV");
 
 		G4RotationMatrix* rot = new G4RotationMatrix();
 		rot->rotateX(90.*deg);
 
 		new G4PVPlacement(rot,
 				G4ThreeVector(0.,0.,0.),
-				sslogicChamber,
+				logicChamber,
 				"ChamberPV",
 				logicWorld,
 				false,
@@ -179,17 +179,40 @@ namespace NaI
 		G4LogicalVolume* logicVac = 
 			new G4LogicalVolume(solidVac, vaccumMat,"ChamberVacLV");
 
-		//place the cauum as the daughter of the steel. 
+		// place the vacuum as the daughter of the chamber.
 		
 	
 		new G4PVPlacement(nullptr,
 				G4ThreeVector(0.,0.,0.),
 				logicVac,
 				"chamberVacPV",
-				sslogicChamber,
+				logicChamber,
 				false,
 				0,
 				true);
+
+		// Tungsten attenuation insert (25.4 mm diameter, 6 mm thick) centered at z = +3.5 mm.
+		G4Material* tungstenMat = nist->FindOrBuildMaterial("G4_W");
+		G4double attenuatorRadius = 0.5 * 25.4 * mm;
+		G4double attenuatorHalfThickness = 0.5 * 6.0 * mm;
+
+		G4Tubs* solidAttenuator = new G4Tubs("WAttenuator",
+				0.,
+				attenuatorRadius,
+				attenuatorHalfThickness,
+				0.*deg,
+				360.*deg);
+		G4LogicalVolume* logicAttenuator =
+			new G4LogicalVolume(solidAttenuator, tungstenMat, "WAttenuatorLV");
+
+		new G4PVPlacement(nullptr,
+				G4ThreeVector(0., 0., 3.5 * mm),
+				logicAttenuator,
+				"WAttenuatorPV",
+				logicVac,
+				false,
+				0,
+				checkOverlaps);
 
 		//Place CLYC detector
 
@@ -242,13 +265,20 @@ namespace NaI
 		visCLYC->SetVisibility(true);
 		logicCrystal->SetVisAttributes(visCLYC);
 		
-		auto visSteel = new G4VisAttributes(G4Colour(0.,1.,0.));
-		visSteel->SetVisibility(true);
-		sslogicChamber->SetVisAttributes(visSteel);		
+		auto visChamber = new G4VisAttributes(G4Colour(0.,1.,0.,0.2));
+		visChamber->SetVisibility(true);
+		visChamber->SetForceWireframe(true);
+		logicChamber->SetVisAttributes(visChamber);
 
-		auto visVac = new G4VisAttributes(G4Colour(0.5,0.5,0.5));
-		visVac->SetVisibility(true);
+		auto visVac = new G4VisAttributes();
+		visVac->SetVisibility(false);
 		logicVac->SetVisAttributes(visVac);
+
+		auto visAttenuator = new G4VisAttributes(G4Colour(1.0,0.8,0.0));
+		visAttenuator->SetVisibility(true);
+		visAttenuator->SetForceSolid(true);
+		visAttenuator->SetForceAuxEdgeVisible(true);
+		logicAttenuator->SetVisAttributes(visAttenuator);
 
 
 		return physWorld;

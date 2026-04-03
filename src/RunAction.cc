@@ -54,7 +54,7 @@ namespace NaI
 			<< "analysis manager " << G4endl;
 
 		analysisManager->SetVerboseLevel(1);
-		analysisManager->SetFileName("Clyc_neutron_response.root");
+		analysisManager->SetFileName("NaI.root");
 
 //#ifdef G4MULTITHREADED
 //		analysisManager->SetNtupleMerging(true);
