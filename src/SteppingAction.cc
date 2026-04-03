@@ -64,7 +64,7 @@ namespace NaI
 
 			G4String volumeName = volume->GetName();
 
-			if(volumeName == "CLYC_crystal"){
+			if(volumeName == "NaI_crystal"){
 
 				fEventAction->AddEdep(edep);
 
@@ -90,7 +90,7 @@ namespace NaI
 
 			// Check if this secondary is create INSIDE the crystal
 			auto preVol = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume();
-			if(preVol->GetName() != "CLYC_crystal") continue;
+			if(preVol->GetName() != "NaI_crystal") continue;
 
 			// We only want the initial kinetic energy when it is created 
 

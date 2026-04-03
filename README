@@ -15,16 +15,14 @@ Geometry is built in `NaI::DetectorConstruction`.
   - Thickness (z depth): **6.0 mm**
   - Center position: **z = +3.5 mm**
 
-## 2) Primary source and momentum cone
+## 2) Primary source and Gaussian beam spot
 
 Primary generation is implemented in `NaI::PrimaryGeneratorAction`.
 
 - A neutron and a gamma are generated each event.
-- Emission direction is sampled in a cone around +Z.
-- The cone is defined by `thetaMax` (currently `1 deg`) and sampled isotropically in solid angle within that cone:
-  - `cos(theta)` sampled uniformly between `cos(thetaMax)` and `1`
-  - `phi` sampled uniformly from `0` to `2π`
-- This produces a forward-directed momentum cone for both primaries.
+- Emission direction is sampled from a **Gaussian angular spread** around -Z to represent beam-on-target emission.
+- Source position is sampled from a **truncated 2D Gaussian** over the attenuator face (25.4 mm diameter), representing the beam spot on target.
+- This produces realistic forward-directed primaries entering the target from the +Z face.
 
 ## 3) Secondary particle tracking and analysis
 
@@ -37,7 +35,7 @@ Secondary tracking and energy scoring are implemented in `NaI::SteppingAction` a
   - Alphas
   - Tritons
 
-Histograms are created and written in `NaI::RunAction` to `Clyc_neutron_response.root`.
+Histograms are created and written in `NaI::RunAction` to `NaI.root`.
 
 ## 4) Physics list
 

@@ -248,25 +248,26 @@ namespace NaI
 		G4LogicalVolume* logicCrystal = 
 			new G4LogicalVolume(solidCrystal,
 					mat_NaI_Tl,
-					"CLYC_crystal");
+					"NaI_crystal");
 		new G4PVPlacement(nullptr,
 				G4ThreeVector(0.,0.,NaIzpos),
 				logicCrystal,
-				"CLYC_crystal",
+				"NaI_crystal",
 				logicWorld,
 				false,
 				0,
 				checkOverlaps);
 
-
-//CLYC is a purple detector
+// NaI crystal is purple
 
 		auto visCLYC = new G4VisAttributes(G4Colour(1.0,0.0,1.0));
 		visCLYC->SetVisibility(true);
+		visCLYC->SetForceSolid(true);
 		logicCrystal->SetVisAttributes(visCLYC);
 		
 		auto visChamber = new G4VisAttributes(G4Colour(0.,1.,0.));
 		visChamber->SetVisibility(true);
+		visChamber->SetForceWireframe(true);
 		logicChamber->SetVisAttributes(visChamber);
 
 		auto visVac = new G4VisAttributes();
@@ -275,6 +276,8 @@ namespace NaI
 
 		auto visAttenuator = new G4VisAttributes(G4Colour(0.4,0.4,0.6));
 		visAttenuator->SetVisibility(true);
+		visAttenuator->SetForceSolid(true);
+		visAttenuator->SetForceAuxEdgeVisible(true);
 		logicAttenuator->SetVisAttributes(visAttenuator);
 
 

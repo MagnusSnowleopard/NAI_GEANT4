@@ -37,6 +37,7 @@
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
 #include <numeric>
+#include <cmath>
 
 
 
@@ -127,20 +128,13 @@ namespace NaI
 
 	void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
 	{
-		// Make a momentum cone around the local inward surface normal (-Z)
-		// so emission is directed into the tungsten puck.
-		G4double thetaMax = 1.*deg;
-		G4double cosThetaMin = std::cos(thetaMax);
-		G4double cosTheta = 1. - G4UniformRand()*(1. - cosThetaMin);
-		G4double sinTheta = std::sqrt(1. - cosTheta*cosTheta);
-
-		G4double phi = 2*CLHEP::pi * G4UniformRand();
-
-		G4double dirx = sinTheta*std::cos(phi);
-		G4double diry = sinTheta*std::sin(phi);
-		G4double dirz = -cosTheta;
-
-		G4ThreeVector dir(dirx,diry,dirz);
+		// Sample a Gaussian angular spread around the local inward normal (-Z),
+		// representing a beam spot hitting the attenuator target.
+		G4double angularSigma = 0.4 * deg;
+		G4double dirx = G4RandGauss::shoot(0., angularSigma);
+		G4double diry = G4RandGauss::shoot(0., angularSigma);
+		G4ThreeVector dir(dirx, diry, -1.0);
+		dir = dir.unit();
 
 		// Sample source position from a circular 2D Gaussian across the tungsten puck face.
 		// The Gaussian is centered on axis and truncated at the puck radius.
@@ -211,7 +205,7 @@ namespace NaI
 		G4double realEn = G4RandGauss::shoot(chosenNeutronEnergy,nsigma);
 
 		if(realEn < 0.) realEn = chosenNeutronEnergy;
-		fGunNeutron->SetParticleEnergy(chosenNeutronEnergy);
+		fGunNeutron->SetParticleEnergy(realEn);
 
 
 		fGunNeutron->SetParticleMomentumDirection(dir);
