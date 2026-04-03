@@ -269,8 +269,8 @@ namespace NaI
 		visChamber->SetVisibility(true);
 		logicChamber->SetVisAttributes(visChamber);
 
-		auto visVac = new G4VisAttributes(G4Colour(0.5,0.5,0.5));
-		visVac->SetVisibility(true);
+		auto visVac = new G4VisAttributes();
+		visVac->SetVisibility(false);
 		logicVac->SetVisAttributes(visVac);
 
 		auto visAttenuator = new G4VisAttributes(G4Colour(0.4,0.4,0.6));
