@@ -275,7 +275,6 @@ namespace NaI
 
 		auto visAttenuator = new G4VisAttributes(G4Colour(0.4,0.4,0.6));
 		visAttenuator->SetVisibility(true);
-		visAttenuator->SetForceSolid(true);
 		logicAttenuator->SetVisAttributes(visAttenuator);
 
 
