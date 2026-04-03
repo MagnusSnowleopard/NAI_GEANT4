@@ -66,8 +66,8 @@ namespace NaI
 		G4double xmin = 0.;
 		G4double xmax = 16384.;
 
-		analysisManager->CreateH1("gamma-spectra",
-				"Energy deposited in crystal",
+		analysisManager->CreateH1("gammaE",
+				"Gamma response energy deposited in crystal",
 				nbins,xmin,xmax);
 
 		analysisManager->CreateH1("ProtonE",
