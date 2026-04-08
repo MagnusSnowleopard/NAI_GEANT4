@@ -193,9 +193,9 @@ namespace NaI
 
 		// Tungsten attenuation insert (25.4 mm diameter, 6 mm thick) centered at z = +3.5 mm.
 		G4Material* tungstenMat = nist->FindOrBuildMaterial("G4_W");
-		G4double attenuatorRadius = 0.5 * 25.4 * mm;
-		G4double attenuatorHalfThickness = 0.5 * 6.0 * mm;
-		G4double attenuatorCenterZ = 3.5 * mm;
+		G4double attenuatorRadius = 0.5 * 2.54 * cm;
+		G4double attenuatorHalfThickness =  .3 * cm;
+		G4double attenuatorCenterZ =  .3* cm;
 
 		G4Tubs* solidAttenuator = new G4Tubs("WAttenuator",
 				0.,
@@ -203,17 +203,17 @@ namespace NaI
 				attenuatorHalfThickness,
 				0.*deg,
 				360.*deg);
-		G4LogicalVolume* logicAttenuator =
+		auto logicAttenuator =
 			new G4LogicalVolume(solidAttenuator, tungstenMat, "WAttenuatorLV");
 
-		new G4PVPlacement(nullptr,
+		new G4PVPlacement(rot,
 				G4ThreeVector(0., 0., attenuatorCenterZ),
 				logicAttenuator,
 				"WAttenuatorPV",
-				logicVac,
+				logicChamber,
 				false,
 				0,
-				checkOverlaps);
+				true);
 
 		//Place CLYC detector
 
@@ -263,7 +263,7 @@ namespace NaI
 
 		auto visCLYC = new G4VisAttributes(G4Colour(1.0,0.0,1.0));
 		visCLYC->SetVisibility(true);
-		visCLYC->SetForceSolid(true);
+		visCLYC->SetForceSolid(false);
 		logicCrystal->SetVisAttributes(visCLYC);
 		
 		auto visChamber = new G4VisAttributes(G4Colour(0.,1.,0.));
@@ -275,10 +275,9 @@ namespace NaI
 		visVac->SetVisibility(false);
 		logicVac->SetVisAttributes(visVac);
 
-		auto visAttenuator = new G4VisAttributes(G4Colour(0.4,0.4,0.6));
+		auto visAttenuator = new G4VisAttributes(G4Colour(0,1,0));
 		visAttenuator->SetVisibility(true);
-		visAttenuator->SetForceSolid(true);
-		visAttenuator->SetForceAuxEdgeVisible(true);
+		visAttenuator->SetForceWireframe(true);
 		logicAttenuator->SetVisAttributes(visAttenuator);
 
 		return physWorld;

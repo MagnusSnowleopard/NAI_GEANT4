@@ -39,7 +39,10 @@
 #include <numeric>
 #include <cmath>
 
-
+#include "G4Event.hh"
+#include "G4PhysicalVolumeStore.hh"
+#include "G4VPhysicalVolume.hh"
+#include "G4RotationMatrix.hh"
 
 namespace NaI
 {
@@ -72,35 +75,35 @@ namespace NaI
 		// fGunGamma->SetParticleEnergy(1.0 * MeV);
 
 		fPhotonEnergyRates = {
-//			{121.*keV, 100},
-	//		{244.*keV, 100}
-//			{344.*keV, 100},
-//			{662.*keV, 100},
-		//	{778.*keV, 100},
-//			{1172.*keV, 100},
-//			{1332.*keV, 100},
-//			{1408.*keV,100},
-//			{1700.*keV,100},
-//			{2000.*keV,100},
-	//		{2400.*keV,100},
-		//	{2800.*keV,100},
-//			{3200.*keV,100},
-//			{3600.*keV,100},
-	//		{3800.*keV,100},
+			//			{121.*keV, 100},
+			//		{244.*keV, 100}
+			//			{344.*keV, 100},
+			//			{662.*keV, 100},
+			//	{778.*keV, 100},
+			//			{1172.*keV, 100},
+			//			{1332.*keV, 100},
+			//			{1408.*keV,100},
+			//			{1700.*keV,100},
+			//			{2000.*keV,100},
+			//		{2400.*keV,100},
+			//	{2800.*keV,100},
+			//			{3200.*keV,100},
+			//			{3600.*keV,100},
+			//		{3800.*keV,100},
 			{4400.*keV,100},
-	//		{4800.*keV,100},
-//			{5200.*keV,100},
-//			{5800.*keV,100},
-	//		{6200.*keV,100},
-	//		{11400.*keV,100}
+			//		{4800.*keV,100},
+			//			{5200.*keV,100},
+			//			{5800.*keV,100},
+			//		{6200.*keV,100},
+			//		{11400.*keV,100}
 
 		};
 
-//		fPhotonEnergyRates = {
-//			{2000.*keV, 100}
-			//{11662.*keV, 100},
+		//		fPhotonEnergyRates = {
+		//			{2000.*keV, 100}
+		//{11662.*keV, 100},
 
-//		};
+		//		};
 		fNeutronEnergyRates= {
 			{5000 *keV,0.000001},//2100 11B
 
@@ -126,79 +129,137 @@ namespace NaI
 
 	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-	void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
-	{
-		// Sample a Gaussian angular spread around +Z to follow the beam direction.
-		// Primaries start on the beam-facing (-Z) face of the W disk and are emitted into W.
-		G4double angularSigma = 0.4 * deg;
-		G4double dirx = G4RandGauss::shoot(0., angularSigma);
-		G4double diry = G4RandGauss::shoot(0., angularSigma);
-		G4ThreeVector dir(dirx, diry, 1.0);
-		dir = dir.unit();
+		void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
+{
+        // ------------------------------------------------------------
+        // One NEW shared vertex per event, bounded by the circular face
+        // of the W disk.
+        //
+        // Keep BOTH guns.
+        // Keep the momentum cone centered on world +z.
+        //
+        // Geometry reminder:
+        // - W disk is centered at local z = +3.5 mm in ChamberLV
+        // - thickness = 6 mm  -> front face at local z = 0.5 mm
+        // - ChamberPV is rotated by +90 deg about x
+        //
+        // Under rotateX(+90 deg):
+        //   world x = local x
+        //   world y = -local z
+        //   world z = local y
+        //
+        // So the W face is a circular disk in world (x,z) at fixed y.
+        // ------------------------------------------------------------
 
-		// Sample source position uniformly across the tungsten puck face,
-		// so the full 1" disk source is exercised and visible over many events.
-		// Puck geometry: diameter = 25.4 mm, thickness = 6 mm, centered at z = +3.5 mm.
-		// Emit from the beam-facing (-Z) face and point into the puck (+Z direction).
-		G4double puckRadius = 0.5 * 25.4 * mm;
-		G4double puckCenterZ = 3.5 * mm;
-		G4double puckHalfThickness = 0.5 * 6.0 * mm;
-		G4double sourceZ = puckCenterZ - puckHalfThickness;
-		G4double radial = puckRadius * std::sqrt(G4UniformRand());
-		G4double azimuth = CLHEP::twopi * G4UniformRand();
-		G4double sourceX = radial * std::cos(azimuth);
-		G4double sourceY = radial * std::sin(azimuth);
-		G4ThreeVector sourcePos(sourceX, sourceY, sourceZ);
+        // ---- Direction cone: same idea as before, around world +z ----
+        G4double angularSigma = 0.4 * deg;
+        G4double dirx = G4RandGauss::shoot(0.0, angularSigma);
+        G4double diry = G4RandGauss::shoot(0.0, angularSigma);
+        G4ThreeVector dir(dirx, diry, 1.0);
+        dir = dir.unit();
 
-		//sample photon energy 
-		G4double randomPhoton = G4UniformRand() * fPhotonRateSum;
-		G4double cumulative = 0.;
-		G4double chosenPhotonEnergy = 0.0;
-		for(const auto& pr : fPhotonEnergyRates){
-			cumulative += pr.second;
-			if(randomPhoton <= cumulative){
-			chosenPhotonEnergy = pr.first;
-			break;
-			}
-		}
-		
-	        G4double gammaresolution = 0.018; // 0.015~~ 4.1% 
-		G4double sigma = gammaresolution*chosenPhotonEnergy;
-		G4double realE = G4RandGauss::shoot(chosenPhotonEnergy,sigma);
+        // ---- W disk geometry in chamber-local coordinates ----
+        G4double puckRadius        = 0.5 * 25.4 * mm;
+        G4double puckCenterZ       = -3 * mm;
+        G4double puckHalfThickness = 0.5 * 6.0 * mm;
 
-	//	if(realE < 0.) realE = chosenPhotonEnergy;
+        // Beam-facing/front face of the tungsten disk in local coords.
+        // Move 1 um INSIDE the W to avoid placing exactly on a boundary.
+        G4double zLocal = (puckCenterZ - puckHalfThickness) + 1.0 * um;
 
-		fGunGamma->SetParticleEnergy(realE);
+        // ---- New random vertex EACH event on the circular W face ----
+        // Gaussian beam spot, truncated by the disk radius.
+        G4double beamSigma = 5.0 * mm;
 
-		G4double randomNeutron = G4UniformRand() * fNeutronRateSum;
-		G4double ncumulative = 0.;
-		G4double chosenNeutronEnergy = 0.0;
-		for(const auto& pr : fNeutronEnergyRates){
-			ncumulative += pr.second;
-			if(randomNeutron <= ncumulative){
-			chosenNeutronEnergy = pr.first;
-			break;
-			}
-		}
+        G4double xLocal = 0.0;
+        G4double yLocal = 0.0;
+        do {
+                xLocal = G4RandGauss::shoot(0.0, beamSigma);
+                yLocal = G4RandGauss::shoot(0.0, beamSigma);
+        } while (xLocal*xLocal + yLocal*yLocal > puckRadius*puckRadius);
 
-		G4double neutronresolution = 0.5; //10% 
-		G4double nsigma = neutronresolution*chosenNeutronEnergy;
-		G4double realEn = G4RandGauss::shoot(chosenNeutronEnergy,nsigma);
+        // Convert from chamber-local to world coordinates.
+        // rotateX(+90 deg): (x, y, z) -> (x, -z, y)
+        G4double sourceX = xLocal;
+        G4double sourceY = yLocal;
+        G4double sourceZ = zLocal;
 
-		if(realEn < 0.) realEn = chosenNeutronEnergy;
-		fGunNeutron->SetParticleEnergy(realEn);
+        G4ThreeVector sourcePos(sourceX, sourceY, sourceZ);
 
+        // ---------------- Photon energy sampling ----------------
+        G4double chosenPhotonEnergy = 0.0;
+        if (fPhotonRateSum > 0.0 && !fPhotonEnergyRates.empty()) {
+                G4double randomPhoton = G4UniformRand() * fPhotonRateSum;
+                G4double cumulative = 0.0;
+                for (const auto& pr : fPhotonEnergyRates) {
+                        cumulative += pr.second;
+                        if (randomPhoton <= cumulative) {
+                                chosenPhotonEnergy = pr.first;
+                                break;
+                        }
+                }
+                if (chosenPhotonEnergy <= 0.0) {
+                        chosenPhotonEnergy = fPhotonEnergyRates.back().first;
+                }
+        }
 
-		fGunNeutron->SetParticleMomentumDirection(dir);
-		fGunGamma->SetParticleMomentumDirection(dir);
-		fGunNeutron->SetParticlePosition(sourcePos);
-		fGunGamma->SetParticlePosition(sourcePos);
+        G4double realE = chosenPhotonEnergy;
+        if (chosenPhotonEnergy > 0.0) {
+                G4double gammaresolution = 0.018;
+                G4double sigma = gammaresolution * chosenPhotonEnergy;
+                realE = G4RandGauss::shoot(chosenPhotonEnergy, sigma);
+                if (realE <= 0.0) realE = chosenPhotonEnergy;
+        }
+        fGunGamma->SetParticleEnergy(realE);
 
+        // ---------------- Neutron energy sampling ----------------
+        G4double chosenNeutronEnergy = 0.0;
+        if (fNeutronRateSum > 0.0 && !fNeutronEnergyRates.empty()) {
+                G4double randomNeutron = G4UniformRand() * fNeutronRateSum;
+                G4double cumulative = 0.0;
+                for (const auto& nr : fNeutronEnergyRates) {
+                        cumulative += nr.second;
+                        if (randomNeutron <= cumulative) {
+                                chosenNeutronEnergy = nr.first;
+                                break;
+                        }
+                }
+                if (chosenNeutronEnergy <= 0.0) {
+                        chosenNeutronEnergy = fNeutronEnergyRates.back().first;
+                }
+        }
 
-		fGunNeutron->GeneratePrimaryVertex(event);
-		fGunGamma->GeneratePrimaryVertex(event);
-	}
+        G4double realEn = chosenNeutronEnergy;
+        if (chosenNeutronEnergy > 0.0) {
+                G4double neutronresolution = 0.5;
+                G4double nsigma = neutronresolution * chosenNeutronEnergy;
+                realEn = G4RandGauss::shoot(chosenNeutronEnergy, nsigma);
+                if (realEn <= 0.0) realEn = chosenNeutronEnergy;
+        }
+        fGunNeutron->SetParticleEnergy(realEn);
 
-	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+        // ---- Same new event vertex for both guns ----
+        fGunGamma->SetParticlePosition(sourcePos);
+        fGunNeutron->SetParticlePosition(sourcePos);
+
+        fGunGamma->SetParticleMomentumDirection(dir);
+        fGunNeutron->SetParticleMomentumDirection(dir);
+
+        // Optional debug: uncomment for a quick check
+        
+/*        if (event->GetEventID() < 20) {
+                G4cout << "Event " << event->GetEventID()
+                       << "  local(x,y,z)=("
+                       << xLocal/mm << ", "
+                       << yLocal/mm << ", "
+                       << zLocal/mm << ") mm   worldPos="
+                       << sourcePos/mm << " mm"
+                       << G4endl;
+        }
+        
+*/
+        fGunGamma->GeneratePrimaryVertex(event);
+        fGunNeutron->GeneratePrimaryVertex(event);
+}
 
 }  // namespace NaI

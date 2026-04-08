@@ -1,3 +1,0 @@
-/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/B1/build_B1/CMakeFiles/NaI.dir
-/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/B1/build_B1/CMakeFiles/edit_cache.dir
-/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/B1/build_B1/CMakeFiles/rebuild_cache.dir
