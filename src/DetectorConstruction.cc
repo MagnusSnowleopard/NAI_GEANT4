@@ -195,6 +195,7 @@ namespace NaI
 		G4Material* tungstenMat = nist->FindOrBuildMaterial("G4_W");
 		G4double attenuatorRadius = 0.5 * 25.4 * mm;
 		G4double attenuatorHalfThickness = 0.5 * 6.0 * mm;
+		G4double attenuatorCenterZ = 3.5 * mm;
 
 		G4Tubs* solidAttenuator = new G4Tubs("WAttenuator",
 				0.,
@@ -206,7 +207,7 @@ namespace NaI
 			new G4LogicalVolume(solidAttenuator, tungstenMat, "WAttenuatorLV");
 
 		new G4PVPlacement(nullptr,
-				G4ThreeVector(0., 0., 3.5 * mm),
+				G4ThreeVector(0., 0., attenuatorCenterZ),
 				logicAttenuator,
 				"WAttenuatorPV",
 				logicVac,
@@ -279,7 +280,6 @@ namespace NaI
 		visAttenuator->SetForceSolid(true);
 		visAttenuator->SetForceAuxEdgeVisible(true);
 		logicAttenuator->SetVisAttributes(visAttenuator);
-
 
 		return physWorld;
 	}
