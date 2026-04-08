@@ -46,6 +46,7 @@
 #
 # Draw smooth trajectories at end of event, showing trajectory points
 # as markers 2 pixels wide:
+/tracking/storeTrajectory 1
 /vis/scene/add/trajectories smooth
 /vis/modeling/trajectories/create/drawByCharge
 /vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
@@ -112,6 +113,7 @@
 /vis/viewer/set/style surface
 /vis/viewer/set/hiddenMarker true
 /vis/viewer/set/viewpointThetaPhi 120 150
+/vis/viewer/zoom 12
 #
 # Re-establish auto refreshing and verbosity:
 /vis/viewer/set/autoRefresh true
