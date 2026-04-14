@@ -36,7 +36,7 @@ Energy deposition in `NaI_crystal` is tagged by lineage:
 - Deposition from **primary gamma lineage** (`EdepGammaLineage`)
 - Deposition from **primary neutron lineage** (`EdepNeutronLineage`)
 
-All spectra are written to `NaI.root` with fixed 1 keV binning over 0–16384 keV (`8192` bins, 2 keV/bin).
+All spectra are written to `NaI_<mode>.root` by default (or `NAI_OUTPUT_BASENAME` if set) with 2 keV/bin over 0–16384 keV (`8192` bins).
 
 Peak-window counters are printed at end-of-run using:
 
@@ -67,7 +67,7 @@ where `f_n` is taken from your simulation window counts.
 cmake -S . -B buildNaI
 cmake --build buildNaI -j
 
-NAI_SOURCE_MODE=gamma_only ./buildNaI/NaI run.mac
-NAI_SOURCE_MODE=neutron_only ./buildNaI/NaI run.mac
-NAI_SOURCE_MODE=ambe NAI_AMBE_GAMMA_PER_NEUTRON=5.75e-3 ./buildNaI/NaI run.mac
+NAI_SOURCE_MODE=gamma_only ./buildNaI/NaI run_gamma_only.mac
+NAI_SOURCE_MODE=neutron_only ./buildNaI/NaI run_neutron_only.mac
+NAI_SOURCE_MODE=ambe NAI_AMBE_GAMMA_PER_NEUTRON=5.75e-3 ./buildNaI/NaI run_ambe.mac
 ```

@@ -5,6 +5,7 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <string>
 
 namespace NaI
 {
@@ -13,7 +14,17 @@ RunAction::RunAction()
 {
   auto* analysisManager = G4AnalysisManager::Instance();
   analysisManager->SetVerboseLevel(1);
-  analysisManager->SetFileName("NaI.root");
+
+  std::string outputName = "NaI";
+  if (const char* outputEnv = std::getenv("NAI_OUTPUT_BASENAME")) {
+    if (outputEnv[0] != '\0') {
+      outputName = outputEnv;
+    }
+  }
+  else if (const char* modeEnv = std::getenv("NAI_SOURCE_MODE")) {
+    outputName += "_" + std::string(modeEnv);
+  }
+  analysisManager->SetFileName(outputName);
 
   if (const char* centerEnv = std::getenv("NAI_PEAK_CENTER_KEV")) {
     const auto value = std::atof(centerEnv);
