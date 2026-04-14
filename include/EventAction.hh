@@ -32,8 +32,10 @@
 
 #include "G4UserEventAction.hh"
 #include "globals.hh"
+#include <map>
 
 class G4Event;
+class G4Track;
 
 namespace NaI
 {
@@ -51,11 +53,28 @@ class EventAction : public G4UserEventAction
     void BeginOfEventAction(const G4Event* event) override;
     void EndOfEventAction(const G4Event* event) override;
 
+    enum class TrackOrigin
+    {
+      kUnknown = 0,
+      kGamma,
+      kNeutron
+    };
+
     void AddEdep(G4double edep) { fEdep += edep; }
+    void AddGammaOriginEdep(G4double edep) { fEdepGammaOrigin += edep; }
+    void AddNeutronOriginEdep(G4double edep) { fEdepNeutronOrigin += edep; }
+
+    TrackOrigin GetTrackOrigin(const G4Track* track) const;
+    void CacheTrackOrigin(const G4Track* track);
 
   private:
     RunAction* fRunAction = nullptr;
     G4double fEdep = 0.;
+    G4double fEdepGammaOrigin = 0.;
+    G4double fEdepNeutronOrigin = 0.;
+    G4bool fHasPrimaryGamma = false;
+    G4bool fHasPrimaryNeutron = false;
+    std::map<G4int, TrackOrigin> fTrackOrigins;
 };
 
 }  // namespace NaI
