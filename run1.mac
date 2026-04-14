@@ -1,21 +1,19 @@
-# Macro file for NaI simulation
-# 
-# Can be run in batch, without graphic
-# or interactively: Idle> /control/execute run1.mac
-#
-# Change the default number of workers (in multi-threading mode) 
-#/run/numberOfThreads 4
-#
-# Initialize kernel
-/run/initialize
-#
-
-
+# AmBe decomposition example macro
 /control/verbose 1
 /run/verbose 0
 /event/verbose 0
 /tracking/verbose 0
-# 
-#
+
+/run/initialize
+
+# Choose source mode: gamma | neutron | full
+/NaI/source/mode full
+/NaI/source/gammaEnergy 4438 keV
+/NaI/source/gammaPerNeutron 5.75e-3
+/NaI/source/sourceRadius 0 mm
+
+# Experimental peak window for 4.438 MeV analysis
+/NaI/analysis/peakCenter 4438 keV
+/NaI/analysis/peakHalfWidth 120 keV
+
 /run/beamOn 500000
-# 

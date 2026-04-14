@@ -1,122 +1,101 @@
-//
-// ********************************************************************
-// * License and Disclaimer                                           *
-// *                                                                  *
-// * The  Geant4 software  is  copyright of the Copyright Holders  of *
-// * the Geant4 Collaboration.  It is provided  under  the terms  and *
-// * conditions of the Geant4 Software License,  included in the file *
-// * LICENSE and available at  http://cern.ch/geant4/license .  These *
-// * include a list of copyright holders.                             *
-// *                                                                  *
-// * Neither the authors of this software system, nor their employing *
-// * institutes,nor the agencies providing financial support for this *
-// * work  make  any representation or  warranty, express or implied, *
-// * regarding  this  software system or assume any liability for its *
-// * use.  Please see the license in the file  LICENSE  and URL above *
-// * for the full disclaimer and the limitation of liability.         *
-// *                                                                  *
-// * Thi:s  code  implementation is the result of  the  scientific and *
-// * technical work of the GEANT4 collaboration.                      *
-// * By using,  copying,  modifying or  distributing the software (or *
-// * any work based  on the software)  you  agree  to acknowledge its *
-// * use  in  resulting  scientific  publications,  and indicate your *
-// * acceptance of all terms of the Geant4 Software license.          *
-// ********************************************************************
-//
-//
-/// \file NaI/src/RunAction.cc
-/// \brief Implementation of the NaI::RunAction class
-
 #include "RunAction.hh"
 
-#include "DetectorConstruction.hh"
-#include "PrimaryGeneratorAction.hh"
-
-#include "G4AccumulableManager.hh"
-#include "G4LogicalVolume.hh"
-#include "G4ParticleDefinition.hh"
-#include "G4ParticleGun.hh"
-#include "G4Run.hh"
-#include "G4RunManager.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4UnitsTable.hh"
 #include "G4AnalysisManager.hh"
+#include "G4GenericMessenger.hh"
+#include "G4Run.hh"
+#include "G4SystemOfUnits.hh"
 
 namespace NaI
 {
 
-	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+RunAction::RunAction()
+{
+  ConfigureMessenger();
 
-	RunAction::RunAction()
-	{
-		auto analysisManager = G4AnalysisManager::Instance();
-		G4cout << "Using" << analysisManager->GetType()
-			<< "analysis manager " << G4endl;
+  auto analysisManager = G4AnalysisManager::Instance();
+  G4cout << "Using " << analysisManager->GetType() << " analysis manager" << G4endl;
 
-		analysisManager->SetVerboseLevel(1);
-		analysisManager->SetFileName("NaI.root");
+  analysisManager->SetVerboseLevel(1);
+  analysisManager->SetFileName("NaI.root");
 
-//#ifdef G4MULTITHREADED
-//		analysisManager->SetNtupleMerging(true);
-//#endif
+  const G4int nbins = 16384;
+  const G4double xmin = 0.;
+  const G4double xmax = 16384.;
 
-		//create hist 
+  analysisManager->CreateH1("EdepTotal_keV", "Total energy deposited in NaI per event", nbins, xmin, xmax);
+  analysisManager->CreateH1("EdepGammaOrigin_keV",
+                            "Energy deposited in NaI by gamma-origin track lineage", nbins, xmin,
+                            xmax);
+  analysisManager->CreateH1("EdepNeutronOrigin_keV",
+                            "Energy deposited in NaI by neutron-origin track lineage", nbins, xmin,
+                            xmax);
 
-		G4int nbins = 8192;
-		G4double xmin = 0.;
-		G4double xmax = 16384.;
+  analysisManager->CreateH1("EdepGammaOnly_keV", "Total deposited energy for gamma-only primaries",
+                            nbins, xmin, xmax);
+  analysisManager->CreateH1("EdepNeutronOnly_keV",
+                            "Total deposited energy for neutron-only primaries", nbins, xmin, xmax);
+  analysisManager->CreateH1("EdepFullAmBe_keV", "Total deposited energy for full AmBe primaries",
+                            nbins, xmin, xmax);
+}
 
-		analysisManager->CreateH1("gammaE",
-				"Gamma response energy deposited in crystal",
-				nbins,xmin,xmax);
+RunAction::~RunAction()
+{
+  delete fMessenger;
+}
 
-		analysisManager->CreateH1("ProtonE",
-				"Proton Energy deposited in crystal from n-reaction",
-				nbins,xmin,xmax);
+void RunAction::ConfigureMessenger()
+{
+  fMessenger = new G4GenericMessenger(this, "/NaI/analysis/", "Analysis controls");
+  auto& centerCmd = fMessenger->DeclarePropertyWithUnit(
+      "peakCenter", "keV", fPeakCenter,
+      "Center of experimental 4.438 MeV peak window used for event counting");
+  centerCmd.SetStates(G4State_PreInit, G4State_Idle);
 
-//		analysisManager->CreateH1("GammaE",
-//				"Gamma Energy deposited in crystal",
-//				nbins,xmin,xmax);
+  auto& widthCmd = fMessenger->DeclarePropertyWithUnit(
+      "peakHalfWidth", "keV", fPeakHalfWidth,
+      "Half-width of experimental peak window (use ~1-2 sigma)");
+  widthCmd.SetStates(G4State_PreInit, G4State_Idle);
+}
 
+void RunAction::BeginOfRunAction(const G4Run*)
+{
+  fEdep = 0.;
+  fGammaOnlyWindowCounts = 0;
+  fNeutronOnlyWindowCounts = 0;
+  fFullAmBeWindowCounts = 0;
 
-		analysisManager->CreateH1("AlphaE",
-				"Alpha Energy deposited in crystal from n-reaction",
-				nbins,xmin,xmax);
+  auto analysisManager = G4AnalysisManager::Instance();
+  analysisManager->OpenFile();
+}
 
+void RunAction::CountWindowEvent(G4bool gammaOnlyPrimary, G4bool neutronOnlyPrimary,
+                                 G4bool fullAmBePrimary)
+{
+  if (gammaOnlyPrimary) {
+    ++fGammaOnlyWindowCounts;
+  }
+  if (neutronOnlyPrimary) {
+    ++fNeutronOnlyWindowCounts;
+  }
+  if (fullAmBePrimary) {
+    ++fFullAmBeWindowCounts;
+  }
+}
 
-		analysisManager->CreateH1("TritonE",
-				"Triton Energy deposited in crystal from n-reaction",
-				nbins,xmin,xmax);
-	}
+void RunAction::EndOfRunAction(const G4Run* run)
+{
+  auto analysisManager = G4AnalysisManager::Instance();
 
-	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+  analysisManager->Write();
+  analysisManager->CloseFile();
 
-	void RunAction::BeginOfRunAction(const G4Run*)
-	{
-		fEdep = 0.;
-
-		auto analysisManager = G4AnalysisManager::Instance();
-
-//		if(IsMaster()){
-
-			analysisManager->OpenFile();
-
-//		}
-	}
-
-	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-	void RunAction::EndOfRunAction(const G4Run* run)
-	{
-		auto analysisManager = G4AnalysisManager::Instance();
-
-//		if(IsMaster()){
-			analysisManager->Write();
-			analysisManager->CloseFile();
-//		}
-	}
-
-	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-	//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+  G4cout << "\n=== 4.438 MeV peak-window summary ===\n"
+         << " Run events: " << run->GetNumberOfEvent() << "\n"
+         << " Window center (keV): " << GetPeakCenterKeV() << "\n"
+         << " Window half-width (keV): " << GetPeakHalfWidthKeV() << "\n"
+         << " Gamma-only events in window: " << fGammaOnlyWindowCounts << "\n"
+         << " Neutron-only events in window: " << fNeutronOnlyWindowCounts << "\n"
+         << " Full-AmBe events in window: " << fFullAmBeWindowCounts << G4endl;
+}
 
 }  // namespace NaI
