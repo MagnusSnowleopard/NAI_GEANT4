@@ -31,11 +31,14 @@
 #define B1PrimaryGeneratorAction_h 1
 
 #include "G4VUserPrimaryGeneratorAction.hh"
+#include "G4ThreeVector.hh"
+#include "G4SystemOfUnits.hh"
+#include "globals.hh"
 #include <vector>
 #include <utility>
 class G4ParticleGun;
 class G4Event;
-class G4Box;
+class G4GenericMessenger;
 
 namespace NaI
 {
@@ -48,6 +51,13 @@ namespace NaI
 class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
   public:
+    enum class SourceMode
+    {
+      kGammaOnly,
+      kNeutronOnly,
+      kFullAmBe
+    };
+
     PrimaryGeneratorAction();
     ~PrimaryGeneratorAction() override;
 
@@ -59,9 +69,22 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     const G4ParticleGun* GetGammaGun() const { return fGunGamma; }
 
   private:
+    void BuildDefaultAmBeSpectrum();
+    void ConfigureMessenger();
+    G4double SampleNeutronEnergy() const;
+    G4double SampleIsotropicCostheta() const;
+    G4ThreeVector SampleIsotropicDirection() const;
+
     G4ParticleGun* fGunNeutron = nullptr;  // pointer a to G4 gun class
     G4ParticleGun* fGunGamma = nullptr;  // pointer a to G4 gun class
-					 
+
+    G4GenericMessenger* fMessenger = nullptr;
+    G4String fModeName = "full";
+    SourceMode fMode = SourceMode::kFullAmBe;
+    G4double fGammaEnergy = 4438. * keV;
+    G4double fGammaPerNeutron = 5.75e-3;
+    G4double fSourceRadius = 0.0 * mm;
+
     std::vector<std::pair<double,double>> fPhotonEnergyRates;
     std::vector<std::pair<double,double>> fNeutronEnergyRates;
 

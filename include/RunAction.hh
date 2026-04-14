@@ -31,11 +31,11 @@
 #define B1RunAction_h 1
 
 #include "G4UserRunAction.hh"
-
-#include "G4Accumulable.hh"
+#include "G4SystemOfUnits.hh"
 #include "globals.hh"
 
 class G4Run;
+class G4GenericMessenger;
 
 namespace NaI
 {
@@ -50,12 +50,26 @@ class RunAction : public G4UserRunAction
 {
   public:
     RunAction();
-    ~RunAction() override = default;
+    ~RunAction() override;
 
     void BeginOfRunAction(const G4Run*) override;
     void EndOfRunAction(const G4Run*) override;
 
-    G4double fEdep =0.;
+    void CountWindowEvent(G4bool gammaOnlyPrimary, G4bool neutronOnlyPrimary, G4bool fullAmBePrimary);
+    G4double GetPeakCenterKeV() const { return fPeakCenter / keV; }
+    G4double GetPeakHalfWidthKeV() const { return fPeakHalfWidth / keV; }
+
+    G4double fEdep = 0.;
+
+  private:
+    void ConfigureMessenger();
+
+    G4GenericMessenger* fMessenger = nullptr;
+    G4double fPeakCenter = 4438. * keV;
+    G4double fPeakHalfWidth = 120. * keV;
+    G4int fGammaOnlyWindowCounts = 0;
+    G4int fNeutronOnlyWindowCounts = 0;
+    G4int fFullAmBeWindowCounts = 0;
     
 };
 
