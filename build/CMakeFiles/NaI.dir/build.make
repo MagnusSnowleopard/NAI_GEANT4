@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4
+CMAKE_SOURCE_DIR = /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI
+CMAKE_BINARY_DIR = /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/NaI.dir/depend.make
@@ -72,100 +72,100 @@ include CMakeFiles/NaI.dir/flags.make
 CMakeFiles/NaI.dir/NaI.cc.o: CMakeFiles/NaI.dir/flags.make
 CMakeFiles/NaI.dir/NaI.cc.o: ../NaI.cc
 CMakeFiles/NaI.dir/NaI.cc.o: CMakeFiles/NaI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/NaI.dir/NaI.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/NaI.cc.o -MF CMakeFiles/NaI.dir/NaI.cc.o.d -o CMakeFiles/NaI.dir/NaI.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/NaI.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/NaI.dir/NaI.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/NaI.cc.o -MF CMakeFiles/NaI.dir/NaI.cc.o.d -o CMakeFiles/NaI.dir/NaI.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/NaI.cc
 
 CMakeFiles/NaI.dir/NaI.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NaI.dir/NaI.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/NaI.cc > CMakeFiles/NaI.dir/NaI.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/NaI.cc > CMakeFiles/NaI.dir/NaI.cc.i
 
 CMakeFiles/NaI.dir/NaI.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NaI.dir/NaI.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/NaI.cc -o CMakeFiles/NaI.dir/NaI.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/NaI.cc -o CMakeFiles/NaI.dir/NaI.cc.s
 
 CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: CMakeFiles/NaI.dir/flags.make
 CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: ../src/ActionInitialization.cc
 CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: CMakeFiles/NaI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/NaI.dir/src/ActionInitialization.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/ActionInitialization.cc.o -MF CMakeFiles/NaI.dir/src/ActionInitialization.cc.o.d -o CMakeFiles/NaI.dir/src/ActionInitialization.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/ActionInitialization.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/NaI.dir/src/ActionInitialization.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/ActionInitialization.cc.o -MF CMakeFiles/NaI.dir/src/ActionInitialization.cc.o.d -o CMakeFiles/NaI.dir/src/ActionInitialization.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/ActionInitialization.cc
 
 CMakeFiles/NaI.dir/src/ActionInitialization.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NaI.dir/src/ActionInitialization.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/ActionInitialization.cc > CMakeFiles/NaI.dir/src/ActionInitialization.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/ActionInitialization.cc > CMakeFiles/NaI.dir/src/ActionInitialization.cc.i
 
 CMakeFiles/NaI.dir/src/ActionInitialization.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NaI.dir/src/ActionInitialization.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/ActionInitialization.cc -o CMakeFiles/NaI.dir/src/ActionInitialization.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/ActionInitialization.cc -o CMakeFiles/NaI.dir/src/ActionInitialization.cc.s
 
 CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o: CMakeFiles/NaI.dir/flags.make
 CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o: ../src/DetectorConstruction.cc
 CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o: CMakeFiles/NaI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o -MF CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o.d -o CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/DetectorConstruction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o -MF CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o.d -o CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/DetectorConstruction.cc
 
 CMakeFiles/NaI.dir/src/DetectorConstruction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NaI.dir/src/DetectorConstruction.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/DetectorConstruction.cc > CMakeFiles/NaI.dir/src/DetectorConstruction.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/DetectorConstruction.cc > CMakeFiles/NaI.dir/src/DetectorConstruction.cc.i
 
 CMakeFiles/NaI.dir/src/DetectorConstruction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NaI.dir/src/DetectorConstruction.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/DetectorConstruction.cc -o CMakeFiles/NaI.dir/src/DetectorConstruction.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/DetectorConstruction.cc -o CMakeFiles/NaI.dir/src/DetectorConstruction.cc.s
 
 CMakeFiles/NaI.dir/src/EventAction.cc.o: CMakeFiles/NaI.dir/flags.make
 CMakeFiles/NaI.dir/src/EventAction.cc.o: ../src/EventAction.cc
 CMakeFiles/NaI.dir/src/EventAction.cc.o: CMakeFiles/NaI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/NaI.dir/src/EventAction.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/EventAction.cc.o -MF CMakeFiles/NaI.dir/src/EventAction.cc.o.d -o CMakeFiles/NaI.dir/src/EventAction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/EventAction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/NaI.dir/src/EventAction.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/EventAction.cc.o -MF CMakeFiles/NaI.dir/src/EventAction.cc.o.d -o CMakeFiles/NaI.dir/src/EventAction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/EventAction.cc
 
 CMakeFiles/NaI.dir/src/EventAction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NaI.dir/src/EventAction.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/EventAction.cc > CMakeFiles/NaI.dir/src/EventAction.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/EventAction.cc > CMakeFiles/NaI.dir/src/EventAction.cc.i
 
 CMakeFiles/NaI.dir/src/EventAction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NaI.dir/src/EventAction.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/EventAction.cc -o CMakeFiles/NaI.dir/src/EventAction.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/EventAction.cc -o CMakeFiles/NaI.dir/src/EventAction.cc.s
 
 CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o: CMakeFiles/NaI.dir/flags.make
 CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o: ../src/PrimaryGeneratorAction.cc
 CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o: CMakeFiles/NaI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o -MF CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o.d -o CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/PrimaryGeneratorAction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o -MF CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o.d -o CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/PrimaryGeneratorAction.cc
 
 CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/PrimaryGeneratorAction.cc > CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/PrimaryGeneratorAction.cc > CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.i
 
 CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/PrimaryGeneratorAction.cc -o CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/PrimaryGeneratorAction.cc -o CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.s
 
 CMakeFiles/NaI.dir/src/RunAction.cc.o: CMakeFiles/NaI.dir/flags.make
 CMakeFiles/NaI.dir/src/RunAction.cc.o: ../src/RunAction.cc
 CMakeFiles/NaI.dir/src/RunAction.cc.o: CMakeFiles/NaI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/NaI.dir/src/RunAction.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/RunAction.cc.o -MF CMakeFiles/NaI.dir/src/RunAction.cc.o.d -o CMakeFiles/NaI.dir/src/RunAction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/RunAction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/NaI.dir/src/RunAction.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/RunAction.cc.o -MF CMakeFiles/NaI.dir/src/RunAction.cc.o.d -o CMakeFiles/NaI.dir/src/RunAction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/RunAction.cc
 
 CMakeFiles/NaI.dir/src/RunAction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NaI.dir/src/RunAction.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/RunAction.cc > CMakeFiles/NaI.dir/src/RunAction.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/RunAction.cc > CMakeFiles/NaI.dir/src/RunAction.cc.i
 
 CMakeFiles/NaI.dir/src/RunAction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NaI.dir/src/RunAction.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/RunAction.cc -o CMakeFiles/NaI.dir/src/RunAction.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/RunAction.cc -o CMakeFiles/NaI.dir/src/RunAction.cc.s
 
 CMakeFiles/NaI.dir/src/SteppingAction.cc.o: CMakeFiles/NaI.dir/flags.make
 CMakeFiles/NaI.dir/src/SteppingAction.cc.o: ../src/SteppingAction.cc
 CMakeFiles/NaI.dir/src/SteppingAction.cc.o: CMakeFiles/NaI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/NaI.dir/src/SteppingAction.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/SteppingAction.cc.o -MF CMakeFiles/NaI.dir/src/SteppingAction.cc.o.d -o CMakeFiles/NaI.dir/src/SteppingAction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/SteppingAction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/NaI.dir/src/SteppingAction.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NaI.dir/src/SteppingAction.cc.o -MF CMakeFiles/NaI.dir/src/SteppingAction.cc.o.d -o CMakeFiles/NaI.dir/src/SteppingAction.cc.o -c /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/SteppingAction.cc
 
 CMakeFiles/NaI.dir/src/SteppingAction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NaI.dir/src/SteppingAction.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/SteppingAction.cc > CMakeFiles/NaI.dir/src/SteppingAction.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/SteppingAction.cc > CMakeFiles/NaI.dir/src/SteppingAction.cc.i
 
 CMakeFiles/NaI.dir/src/SteppingAction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NaI.dir/src/SteppingAction.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/src/SteppingAction.cc -o CMakeFiles/NaI.dir/src/SteppingAction.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/SteppingAction.cc -o CMakeFiles/NaI.dir/src/SteppingAction.cc.s
 
 # Object files for target NaI
 NaI_OBJECTS = \
@@ -229,7 +229,7 @@ NaI: /home/rd/Packages/GEANT4/geant_install/lib/libG4global.so
 NaI: /home/rd/Packages/GEANT4/geant_install/lib/libG4clhep.so
 NaI: /home/rd/Packages/GEANT4/geant_install/lib/libG4ptl.so.3.0.0
 NaI: CMakeFiles/NaI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable NaI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable NaI"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NaI.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -241,6 +241,6 @@ CMakeFiles/NaI.dir/clean:
 .PHONY : CMakeFiles/NaI.dir/clean
 
 CMakeFiles/NaI.dir/depend:
-	cd /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4 /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4 /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI/NAI_GEANT4/buildNaI/CMakeFiles/NaI.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/build/CMakeFiles/NaI.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/NaI.dir/depend
 
