@@ -32,7 +32,6 @@
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "G4ThreeVector.hh"
-#include "G4SystemOfUnits.hh"
 #include "globals.hh"
 #include <vector>
 #include <utility>
