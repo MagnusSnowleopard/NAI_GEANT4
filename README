@@ -1,62 +1,73 @@
-# NaI Geant4 Simulation
+# NaI Geant4 Simulation (AmBe 4.438 MeV workflow)
 
-This repository contains a Geant4 application for studying gamma/neutron interactions in a NaI(Tl) detector, including secondary charged-particle production and attenuation effects from in-beam materials.
+This repository contains a Geant4 application for NaI(Tl) detector response studies in mixed neutron/gamma fields. The current setup is focused on **AmBe source correction of the apparent 4.438 MeV peak**.
 
 ## 1) Geometry definition
 
 Geometry is built in `NaI::DetectorConstruction`.
 
-- **World**: Air-filled box (`G4_AIR`).
-- **Chamber**: Cylindrical **aluminum** chamber (`G4_Al`) with a vacuum interior (`G4_Galactic`).
-- **NaI detector crystal**: Rectangular NaI(Tl) crystal volume placed downstream of the chamber along +Z.
-- **Attenuation insert**: A tungsten cylinder is placed inside the chamber vacuum to study intrinsic-efficiency attenuation.
-  - Material: `G4_W`
-  - Diameter: **25.4 mm**
-  - Thickness (z depth): **6.0 mm**
-  - Center position: **z = +3.5 mm**
+- World: Air-filled box (`G4_AIR`)
+- Aluminum chamber (`G4_Al`) with vacuum interior (`G4_Galactic`)
+- Tungsten insert in chamber (`G4_W`)
+- Rectangular NaI(Tl) crystal (`NaI_crystal`) where event energy is scored
 
-## 2) Primary source and Gaussian beam spot
+## 2) Physics list
 
-Primary generation is implemented in `NaI::PrimaryGeneratorAction`.
+`NaI.cc` uses `FTFP_BERT_HP` to include high-precision neutron transport and neutron-induced gamma production relevant for AmBe work.
 
-- A neutron and a gamma are generated each event.
-- Emission direction is sampled from a **Gaussian angular spread** around -Z to represent beam-on-target emission.
-- Source position is sampled from a **truncated 2D Gaussian** over the attenuator face (25.4 mm diameter), representing the beam spot on target.
-- This produces realistic forward-directed primaries entering the target from the +Z face.
+## 3) Source modes for AmBe decomposition
 
-## 3) Secondary particle tracking and analysis
+`NaI::PrimaryGeneratorAction` supports three modes controlled by environment variables:
 
-Secondary tracking and energy scoring are implemented in `NaI::SteppingAction` and `NaI::EventAction`.
+- `NAI_SOURCE_MODE=gamma_only`  
+  Emits only 4.438 MeV gammas (isotropic from source point).
+- `NAI_SOURCE_MODE=neutron_only`  
+  Emits only neutrons sampled from an approximate AmBe spectrum (isotropic).
+- `NAI_SOURCE_MODE=ambe` (default)  
+  Emits one neutron every event and emits a correlated 4.438 MeV gamma with probability `NAI_AMBE_GAMMA_PER_NEUTRON` (default `5.75e-3`).
 
-- Total deposited energy is accumulated for steps inside the crystal volume and filled into the main gamma spectrum histogram.
-- Newly created secondaries are checked each step.
-- When secondaries are created in the crystal, the code records initial kinetic energy spectra for:
-  - Protons
-  - Alphas
-  - Tritons
+This enables the exact three-run decomposition needed for neutron-background correction under the 4.438 MeV region.
 
-Histograms are created and written in `NaI::RunAction` to `NaI.root`.
+## 4) Event tagging and outputs
 
-## 4) Physics list
+Energy deposition in `NaI_crystal` is tagged by lineage:
 
-The executable uses `QBBC` as configured in `NaI.cc`.
+- Total event deposition (`EdepTotal`)
+- Deposition from **primary gamma lineage** (`EdepGammaLineage`)
+- Deposition from **primary neutron lineage** (`EdepNeutronLineage`)
 
-## 5) Running
+All spectra are written to `NaI.root` with fixed 1 keV binning over 0–16384 keV (`8192` bins, 2 keV/bin).
 
-### Interactive mode
+Peak-window counters are printed at end-of-run using:
+
+- `NAI_PEAK_CENTER_KEV` (default `4438`)
+- `NAI_PEAK_HALF_WIDTH_KEV` (default `120`)
+
+The run summary reports:
+
+- gamma-lineage events inside the window
+- neutron-lineage events inside the window
+- estimated neutron-induced fraction  
+  `f_n = N_window(neutron-lineage) / (N_window(neutron-lineage) + N_window(gamma-lineage))`
+
+## 5) Recommended calibration workflow
+
+1. **Gamma-only run** (`NAI_SOURCE_MODE=gamma_only`) to estimate true FEP response shape.
+2. **Neutron-only run** (`NAI_SOURCE_MODE=neutron_only`) to estimate neutron-induced counts in your 4.438 MeV peak window.
+3. **Full AmBe run** (`NAI_SOURCE_MODE=ambe`) for closure checks and mixed-field spectrum validation.
+4. Compute corrected experimental peak counts using your measured peak area:
+
+   `N_FEP,true = N_measured * (1 - f_n)`
+
+where `f_n` is taken from your simulation window counts.
+
+## 6) Running examples
 
 ```bash
-./NaI
-```
+cmake -S . -B buildNaI
+cmake --build buildNaI -j
 
-Then execute macro commands manually, or:
-
-```bash
-/control/execute run1.mac
-```
-
-### Batch mode
-
-```bash
-./NaI NaI.in > NaI.out
+NAI_SOURCE_MODE=gamma_only ./buildNaI/NaI run.mac
+NAI_SOURCE_MODE=neutron_only ./buildNaI/NaI run.mac
+NAI_SOURCE_MODE=ambe NAI_AMBE_GAMMA_PER_NEUTRON=5.75e-3 ./buildNaI/NaI run.mac
 ```

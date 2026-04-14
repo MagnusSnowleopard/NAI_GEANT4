@@ -1,64 +1,79 @@
-//
-// ********************************************************************
-// * License and Disclaimer                                           *
-// *                                                                  *
-// * The  Geant4 software  is  copyright of the Copyright Holders  of *
-// * the Geant4 Collaboration.  It is provided  under  the terms  and *
-// * conditions of the Geant4 Software License,  included in the file *
-// * LICENSE and available at  http://cern.ch/geant4/license .  These *
-// * include a list of copyright holders.                             *
-// *                                                                  *
-// * Neither the authors of this software system, nor their employing *
-// * institutes,nor the agencies providing financial support for this *
-// * work  make  any representation or  warranty, express or implied, *
-// * regarding  this  software system or assume any liability for its *
-// * use.  Please see the license in the file  LICENSE  and URL above *
-// * for the full disclaimer and the limitation of liability.         *
-// *                                                                  *
-// * This  code  implementation is the result of  the  scientific and *
-// * technical work of the GEANT4 collaboration.                      *
-// * By using,  copying,  modifying or  distributing the software (or *
-// * any work based  on the software)  you  agree  to acknowledge its *
-// * use  in  resulting  scientific  publications,  and indicate your *
-// * acceptance of all terms of the Geant4 Software license.          *
-// ********************************************************************
-//
-//
-/// \file NaI/src/EventAction.cc
-/// \brief Implementation of the NaI::EventAction class
-
 #include "EventAction.hh"
+
+#include "RunAction.hh"
+
 #include "G4AnalysisManager.hh"
 #include "G4SystemOfUnits.hh"
-#include "RunAction.hh"
 
 namespace NaI
 {
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 EventAction::EventAction(RunAction* runAction) : fRunAction(runAction) {}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void EventAction::BeginOfEventAction(const G4Event*)
 {
-  fEdep = 0.;
+  fEdepTotal = 0.;
+  fEdepGammaLineage = 0.;
+  fEdepNeutronLineage = 0.;
+  fTrackLineage.clear();
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+void EventAction::ClassifyTrack(G4int trackId, G4int parentId, const G4String& particleName)
+{
+  if (fTrackLineage.find(trackId) != fTrackLineage.end()) {
+    return;
+  }
+
+  LineageTag tag = LineageTag::kUnknown;
+
+  if (parentId == 0) {
+    if (particleName == "gamma") {
+      tag = LineageTag::kPrimaryGamma;
+    }
+    else if (particleName == "neutron") {
+      tag = LineageTag::kPrimaryNeutron;
+    }
+  }
+  else {
+    const auto it = fTrackLineage.find(parentId);
+    if (it != fTrackLineage.end()) {
+      tag = it->second;
+    }
+  }
+
+  fTrackLineage.emplace(trackId, tag);
+}
+
+void EventAction::AddEdepByTrack(G4int trackId, G4double edep)
+{
+  fEdepTotal += edep;
+
+  const auto it = fTrackLineage.find(trackId);
+  if (it == fTrackLineage.end()) {
+    return;
+  }
+
+  if (it->second == LineageTag::kPrimaryGamma) {
+    fEdepGammaLineage += edep;
+  }
+  else if (it->second == LineageTag::kPrimaryNeutron) {
+    fEdepNeutronLineage += edep;
+  }
+}
 
 void EventAction::EndOfEventAction(const G4Event*)
 {
-	auto analysisManager = G4AnalysisManager::Instance();
+  auto* analysisManager = G4AnalysisManager::Instance();
 
-	G4double edep_keV = fEdep / keV;
+  const auto total_keV = fEdepTotal / keV;
+  const auto gamma_keV = fEdepGammaLineage / keV;
+  const auto neutron_keV = fEdepNeutronLineage / keV;
 
-	analysisManager->FillH1(0,edep_keV);
+  analysisManager->FillH1(0, total_keV);
+  analysisManager->FillH1(1, gamma_keV);
+  analysisManager->FillH1(2, neutron_keV);
 
-
+  fRunAction->ScorePeakWindow(gamma_keV, neutron_keV);
 }
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 }  // namespace NaI
