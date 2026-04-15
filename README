@@ -39,7 +39,7 @@ Other controls:
 - `/NaI/source/sourceRadius 0 mm` (0 = point source; >0 = circular active source)
 
 Notes:
-- Neutrons are sampled from an approximate tabulated AmBe spectrum (0.1-11 MeV weighted points).
+- Neutrons are sampled from a tabulated AmBe relative-intensity spectrum (0.257-9.86 MeV, 76 points).
 - Emission is isotropic for both neutron and prompt gamma.
 
 ---
@@ -85,7 +85,30 @@ Use these directly to estimate neutron-induced contamination and compute your co
 
 ---
 
-## 5) Recommended run sequence
+## 5) Detector-resolution model (set 5.5% at 4.438 MeV)
+
+The simulation now includes an optional Gaussian response smearing for **gamma-related deposited-energy outputs**.  
+By default it is configured to **5.5% FWHM at 4.438 MeV**, matching your requested NaI(Tl) response point:
+
+- `/NaI/analysis/applyResolutionSmearing true`
+- `/NaI/analysis/resolutionRefEnergy 4438 keV`
+- `/NaI/analysis/resolutionRefFwhmFraction 0.055`
+
+Model used:
+
+- `FWHM(E) = FWHM(E_ref) * sqrt(E / E_ref)`
+- `sigma(E) = FWHM(E) / 2.35482`
+- `E_smeared ~ N(E_true, sigma(E))`
+
+New histograms in `NaI.root`:
+
+7. `EdepGammaOriginSmeared_keV` : smeared gamma-origin spectrum  
+8. `EdepGammaOnlySmeared_keV`   : smeared gamma-only spectrum  
+9. `EdepFullAmBeSmeared_keV`    : smeared full-AmBe total (only for events containing primary gamma)
+
+---
+
+## 6) Recommended run sequence
 
 ### A) Gamma-only response
 
@@ -95,6 +118,9 @@ Use these directly to estimate neutron-induced contamination and compute your co
 /NaI/source/gammaEnergy 4438 keV
 /NaI/analysis/peakCenter 4438 keV
 /NaI/analysis/peakHalfWidth 120 keV
+/NaI/analysis/applyResolutionSmearing true
+/NaI/analysis/resolutionRefEnergy 4438 keV
+/NaI/analysis/resolutionRefFwhmFraction 0.055
 /run/beamOn 2000000
 ```
 
@@ -105,6 +131,9 @@ Use these directly to estimate neutron-induced contamination and compute your co
 /NaI/source/mode neutron
 /NaI/analysis/peakCenter 4438 keV
 /NaI/analysis/peakHalfWidth 120 keV
+/NaI/analysis/applyResolutionSmearing true
+/NaI/analysis/resolutionRefEnergy 4438 keV
+/NaI/analysis/resolutionRefFwhmFraction 0.055
 /run/beamOn 5000000
 ```
 
@@ -116,6 +145,9 @@ Use these directly to estimate neutron-induced contamination and compute your co
 /NaI/source/gammaPerNeutron 5.75e-3
 /NaI/analysis/peakCenter 4438 keV
 /NaI/analysis/peakHalfWidth 120 keV
+/NaI/analysis/applyResolutionSmearing true
+/NaI/analysis/resolutionRefEnergy 4438 keV
+/NaI/analysis/resolutionRefFwhmFraction 0.055
 /run/beamOn 5000000
 ```
 
@@ -126,7 +158,7 @@ Then verify (within MC statistics):
 
 ---
 
-## 6) Build and run
+## 7) Build and run
 
 ```bash
 cmake -S . -B build

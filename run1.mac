@@ -15,5 +15,8 @@
 # Experimental peak window for 4.438 MeV analysis
 /NaI/analysis/peakCenter 4438 keV
 /NaI/analysis/peakHalfWidth 120 keV
+/NaI/analysis/applyResolutionSmearing true
+/NaI/analysis/resolutionRefEnergy 4438 keV
+/NaI/analysis/resolutionRefFwhmFraction 0.055
 
 /run/beamOn 500000
