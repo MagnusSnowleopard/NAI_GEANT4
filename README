@@ -39,7 +39,7 @@ Other controls:
 - `/NaI/source/sourceRadius 0 mm` (0 = point source; >0 = circular active source)
 
 Notes:
-- Neutrons are sampled from an approximate tabulated AmBe spectrum (0.1-11 MeV weighted points).
+- Neutrons are sampled from a tabulated AmBe relative-intensity spectrum (0.257-9.86 MeV, 76 points).
 - Emission is isotropic for both neutron and prompt gamma.
 
 ---
@@ -85,7 +85,21 @@ Use these directly to estimate neutron-induced contamination and compute your co
 
 ---
 
-## 5) Recommended run sequence
+## 5) Prompt-gamma source smearing in primary generation
+
+The prompt source gamma is now smeared directly in `PrimaryGeneratorAction` before generation:
+
+- `gammaresolution = 0.02` (2% sigma/E)
+- `sigma = gammaresolution * chosenPhotonEnergy`
+- `realE = G4RandGauss::shoot(chosenPhotonEnergy, sigma)`
+
+and `realE` is used in `fGunGamma->SetParticleEnergy(realE)`.
+
+This replaces event-level `SmearDetectedEnergy` post-processing.
+
+---
+
+## 6) Recommended run sequence
 
 ### A) Gamma-only response
 
@@ -126,7 +140,7 @@ Then verify (within MC statistics):
 
 ---
 
-## 6) Build and run
+## 7) Build and run
 
 ```bash
 cmake -S . -B build

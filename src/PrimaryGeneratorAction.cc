@@ -7,6 +7,7 @@
 #include "G4SystemOfUnits.hh"
 #include "G4ThreeVector.hh"
 #include "Randomize.hh"
+#include <algorithm>
 #include <cmath>
 
 namespace NaI
@@ -36,12 +37,45 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 
 void PrimaryGeneratorAction::BuildDefaultAmBeSpectrum()
 {
-  // Approximate AmBe neutron spectrum (piecewise points, weights are relative).
-  fNeutronEnergyRates = {
-    {0.1 * MeV, 0.06}, {0.3 * MeV, 0.08}, {0.5 * MeV, 0.10}, {0.8 * MeV, 0.14},
-    {1.2 * MeV, 0.17}, {1.8 * MeV, 0.19}, {2.5 * MeV, 0.16}, {3.2 * MeV, 0.12},
-    {4.0 * MeV, 0.08}, {5.0 * MeV, 0.05}, {6.5 * MeV, 0.03}, {8.0 * MeV, 0.015},
-    {10.0 * MeV, 0.01}, {11.0 * MeV, 0.005}};
+  // AmBe neutron spectrum provided as relative intensity vs. energy points.
+  // Energy points are in MeV and intensity points are arbitrary relative units.
+  const std::vector<G4double> energiesMeV = {
+      0.257, 0.368, 0.515, 0.897, 1.059, 1.191, 1.353, 1.485, 1.544, 1.588, 1.618,
+      1.735, 1.794, 1.824, 2.000, 2.088, 2.147, 2.265, 2.309, 2.368, 2.412, 2.515,
+      2.603, 2.647, 2.721, 2.838, 2.956, 3.103, 3.147, 3.235, 3.471, 3.544, 3.691,
+      3.735, 3.956, 4.147, 4.235, 4.368, 4.456, 4.529, 4.662, 4.882, 5.029, 5.221,
+      5.309, 5.412, 5.500, 5.632, 5.706, 5.794, 5.824, 5.882, 5.941, 6.088, 6.294,
+      6.485, 6.691, 6.794, 6.838, 7.088, 7.294, 7.647, 7.794, 8.147, 8.279, 8.397,
+      8.559, 8.706, 8.985, 9.059, 9.235, 9.338, 9.544, 9.662, 9.750, 9.860};
+  const std::vector<G4double> intensities = {
+      199.072, 185.151, 169.838, 151.740, 151.740, 142.691, 134.339, 119.722, 108.585,
+      95.360, 89.095, 74.478, 67.517, 60.557, 66.125, 70.998, 75.870, 87.007, 98.144,
+      110.673, 125.986, 135.731, 153.132, 161.485, 184.455, 194.200, 206.032, 233.875,
+      246.404, 255.452, 244.316, 237.355, 230.394, 220.650, 209.513, 194.896, 190.023,
+      186.543, 194.896, 201.160, 208.817, 211.601, 210.905, 203.944, 198.376, 194.200,
+      190.719, 187.935, 187.239, 173.318, 164.269, 144.780, 135.035, 128.074, 127.378,
+      125.290, 122.506, 114.849, 107.889, 99.536, 98.144, 104.408, 98.144, 88.399, 84.919,
+      64.037, 45.244, 42.459, 45.244, 52.900, 67.517, 72.390, 79.350, 68.213, 48.724,
+      38.283};
+
+  fNeutronEnergyRates.clear();
+  if (energiesMeV.size() != intensities.size() || energiesMeV.empty()) {
+    fNeutronEnergyRates = {{2.5 * MeV, 1.0}};
+  } else {
+    fNeutronEnergyRates.reserve(energiesMeV.size());
+    for (std::size_t i = 0; i < energiesMeV.size(); ++i) {
+      G4double dE = 0.;
+      if (i == 0) {
+        dE = energiesMeV[i + 1] - energiesMeV[i];
+      } else if (i + 1 == energiesMeV.size()) {
+        dE = energiesMeV[i] - energiesMeV[i - 1];
+      } else {
+        dE = 0.5 * (energiesMeV[i + 1] - energiesMeV[i - 1]);
+      }
+      const G4double weight = std::max(0., intensities[i]) * std::max(0., dE);
+      fNeutronEnergyRates.emplace_back(energiesMeV[i] * MeV, weight);
+    }
+  }
 
   fNeutronRateSum = 0.;
   for (const auto& nr : fNeutronEnergyRates) {
@@ -127,9 +161,17 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
         (fMode == SourceMode::kGammaOnly) ? true : (G4UniformRand() < fGammaPerNeutron);
 
     if (emitGamma) {
+      const G4double chosenPhotonEnergy = fGammaEnergy;
+      const G4double gammaresolution = 0.02;  // 2% (sigma/E)
+      const G4double sigma = gammaresolution * chosenPhotonEnergy;
+      G4double realE = G4RandGauss::shoot(chosenPhotonEnergy, sigma);
+      if (realE < 0.) {
+        realE = chosenPhotonEnergy;
+      }
+
       fGunGamma->SetParticlePosition(sourcePos);
       fGunGamma->SetParticleMomentumDirection(SampleIsotropicDirection());
-      fGunGamma->SetParticleEnergy(fGammaEnergy);
+      fGunGamma->SetParticleEnergy(realE);
       fGunGamma->GeneratePrimaryVertex(event);
     }
   }
