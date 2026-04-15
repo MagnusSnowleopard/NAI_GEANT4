@@ -36,15 +36,6 @@ RunAction::RunAction()
                             "Total deposited energy for neutron-only primaries", nbins, xmin, xmax);
   analysisManager->CreateH1("EdepFullAmBe_keV", "Total deposited energy for full AmBe primaries",
                             nbins, xmin, xmax);
-  analysisManager->CreateH1("EdepGammaOriginSmeared_keV",
-                            "Gamma-origin deposited energy/event with detector-resolution smearing",
-                            nbins, xmin, xmax);
-  analysisManager->CreateH1("EdepGammaOnlySmeared_keV",
-                            "Total deposited energy for gamma-only primaries with smearing", nbins,
-                            xmin, xmax);
-  analysisManager->CreateH1("EdepFullAmBeSmeared_keV",
-                            "Total deposited energy for full AmBe primaries with smearing when gamma is present",
-                            nbins, xmin, xmax);
 }
 
 RunAction::~RunAction()

@@ -81,24 +81,27 @@ namespace NaI
 	{
 		auto analysisManager = G4AnalysisManager::Instance();
 
+		const auto totalEdepKeV = fEdep / keV;
+		const auto gammaOriginEdepKeV = fEdepGammaOrigin / keV;
+		const auto neutronOriginEdepKeV = fEdepNeutronOrigin / keV;
 
-		analysisManager->FillH1(0, fEdep);
-		analysisManager->FillH1(1, fEdepGammaOrigin);
-		analysisManager->FillH1(2, fEdepNeutronOrigin);
+		analysisManager->FillH1(0, totalEdepKeV);
+		analysisManager->FillH1(1, gammaOriginEdepKeV);
+		analysisManager->FillH1(2, neutronOriginEdepKeV);
 
 		if (fHasPrimaryGamma && !fHasPrimaryNeutron) {
-			analysisManager->FillH1(3, fEdep);
+			analysisManager->FillH1(3, totalEdepKeV);
 		}
 		if (!fHasPrimaryGamma && fHasPrimaryNeutron) {
-			analysisManager->FillH1(4, fEdep);
+			analysisManager->FillH1(4, totalEdepKeV);
 		}
 		if (fHasPrimaryGamma && fHasPrimaryNeutron) {
-			analysisManager->FillH1(5, fEdep);
+			analysisManager->FillH1(5, totalEdepKeV);
 		}
 
 		const auto center = fRunAction->GetPeakCenterKeV();
 		const auto halfWidth = fRunAction->GetPeakHalfWidthKeV();
-		if (fEdep >= (center - halfWidth) && fEdep <= (center + halfWidth)) {
+		if (totalEdepKeV >= (center - halfWidth) && totalEdepKeV <= (center + halfWidth)) {
 			fRunAction->CountWindowEvent(fHasPrimaryGamma && !fHasPrimaryNeutron,
 					!fHasPrimaryGamma && fHasPrimaryNeutron,
 					fHasPrimaryGamma && fHasPrimaryNeutron);
