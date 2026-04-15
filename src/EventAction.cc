@@ -93,14 +93,19 @@ void EventAction::EndOfEventAction(const G4Event*)
   analysisManager->FillH1(1, edepGammaOrigin_keV);
   analysisManager->FillH1(2, edepNeutronOrigin_keV);
 
+  const G4double edepGammaOriginSmeared_keV = SmearGammaLikeEnergy(fEdepGammaOrigin) / keV;
+  analysisManager->FillH1(6, edepGammaOriginSmeared_keV);
+
   if (fHasPrimaryGamma && !fHasPrimaryNeutron) {
     analysisManager->FillH1(3, edep_keV);
+    analysisManager->FillH1(7, SmearGammaLikeEnergy(fEdep) / keV);
   }
   if (!fHasPrimaryGamma && fHasPrimaryNeutron) {
     analysisManager->FillH1(4, edep_keV);
   }
   if (fHasPrimaryGamma && fHasPrimaryNeutron) {
     analysisManager->FillH1(5, edep_keV);
+    analysisManager->FillH1(8, SmearGammaLikeEnergy(fEdep) / keV);
   }
 
   const auto center = fRunAction->GetPeakCenterKeV();
@@ -112,7 +117,7 @@ void EventAction::EndOfEventAction(const G4Event*)
   }
 }
 
-G4double EventAction::SmearDetectedEnergy(G4double energy) const
+G4double EventAction::SmearGammaLikeEnergy(G4double energy) const
 {
   if (!fRunAction->GetApplyResolutionSmearing() || energy <= 0.) {
     return energy;
