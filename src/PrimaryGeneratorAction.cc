@@ -162,7 +162,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
 
     if (emitGamma) {
       const G4double chosenPhotonEnergy = fGammaEnergy;
-      const G4double gammaresolution = 0.02;  // 2% (sigma/E)
+      const G4double gammaresolution = 0.04;  // 2% (sigma/E)
       const G4double sigma = gammaresolution * chosenPhotonEnergy;
       G4double realE = G4RandGauss::shoot(chosenPhotonEnergy, sigma);
       if (realE < 0.) {

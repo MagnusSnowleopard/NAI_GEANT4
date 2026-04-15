@@ -239,9 +239,9 @@ CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o: \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/ThreeVector.h \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Utility/defs.h \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/ThreeVector.icc \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4SystemOfUnits.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Units/SystemOfUnits.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Event.hh \
  /usr/include/c++/11/set /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h \
