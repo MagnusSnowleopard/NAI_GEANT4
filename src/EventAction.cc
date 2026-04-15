@@ -81,9 +81,13 @@ void EventAction::EndOfEventAction(const G4Event*)
 {
   auto analysisManager = G4AnalysisManager::Instance();
 
-  const G4double edep_keV = fEdep / keV;
-  const G4double edepGammaOrigin_keV = fEdepGammaOrigin / keV;
-  const G4double edepNeutronOrigin_keV = fEdepNeutronOrigin / keV;
+  const G4double edepSmeared = SmearDetectedEnergy(fEdep);
+  const G4double edepGammaOriginSmeared = SmearDetectedEnergy(fEdepGammaOrigin);
+  const G4double edepNeutronOriginSmeared = SmearDetectedEnergy(fEdepNeutronOrigin);
+
+  const G4double edep_keV = edepSmeared / keV;
+  const G4double edepGammaOrigin_keV = edepGammaOriginSmeared / keV;
+  const G4double edepNeutronOrigin_keV = edepNeutronOriginSmeared / keV;
 
   analysisManager->FillH1(0, edep_keV);
   analysisManager->FillH1(1, edepGammaOrigin_keV);
