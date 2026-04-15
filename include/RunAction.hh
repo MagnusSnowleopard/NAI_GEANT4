@@ -30,6 +30,7 @@
 #ifndef B1RunAction_h
 #define B1RunAction_h 1
 
+#include "G4SystemOfUnits.hh"
 #include "G4UserRunAction.hh"
 #include "G4SystemOfUnits.hh"
 #include "globals.hh"
