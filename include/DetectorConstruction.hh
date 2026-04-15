@@ -32,6 +32,7 @@
 
 #include "G4VUserDetectorConstruction.hh"
 
+#include "G4SystemOfUnits.hh"
 
 class G4VPhysicalVolume;
 class G4LogicalVolume;
