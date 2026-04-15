@@ -9,6 +9,9 @@
 #include "G4String.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4Track.hh"
+#include "Randomize.hh"
+#include <algorithm>
+#include <cmath>
 
 namespace NaI
 {
@@ -78,9 +81,13 @@ void EventAction::EndOfEventAction(const G4Event*)
 {
   auto analysisManager = G4AnalysisManager::Instance();
 
-  const G4double edep_keV = fEdep / keV;
-  const G4double edepGammaOrigin_keV = fEdepGammaOrigin / keV;
-  const G4double edepNeutronOrigin_keV = fEdepNeutronOrigin / keV;
+  const G4double edepSmeared = SmearDetectedEnergy(fEdep);
+  const G4double edepGammaOriginSmeared = SmearDetectedEnergy(fEdepGammaOrigin);
+  const G4double edepNeutronOriginSmeared = SmearDetectedEnergy(fEdepNeutronOrigin);
+
+  const G4double edep_keV = edepSmeared / keV;
+  const G4double edepGammaOrigin_keV = edepGammaOriginSmeared / keV;
+  const G4double edepNeutronOrigin_keV = edepNeutronOriginSmeared / keV;
 
   analysisManager->FillH1(0, edep_keV);
   analysisManager->FillH1(1, edepGammaOrigin_keV);
@@ -103,6 +110,24 @@ void EventAction::EndOfEventAction(const G4Event*)
                                  !fHasPrimaryGamma && fHasPrimaryNeutron,
                                  fHasPrimaryGamma && fHasPrimaryNeutron);
   }
+}
+
+G4double EventAction::SmearDetectedEnergy(G4double energy) const
+{
+  if (!fRunAction->GetApplyResolutionSmearing() || energy <= 0.) {
+    return energy;
+  }
+
+  const G4double refEnergy = fRunAction->GetResolutionRefEnergy();
+  const G4double refFwhmFraction = fRunAction->GetResolutionRefFwhmFraction();
+  if (refEnergy <= 0. || refFwhmFraction <= 0.) {
+    return energy;
+  }
+
+  const G4double fwhmAtEnergy = refFwhmFraction * refEnergy * std::sqrt(energy / refEnergy);
+  constexpr G4double kFwhmToSigma = 2.35482004503;
+  const G4double sigma = fwhmAtEnergy / kFwhmToSigma;
+  return std::max(0., G4RandGauss::shoot(energy, sigma));
 }
 
 }  // namespace NaI

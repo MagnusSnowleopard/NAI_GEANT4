@@ -68,6 +68,8 @@ class EventAction : public G4UserEventAction
     void CacheTrackOrigin(const G4Track* track);
 
   private:
+    G4double SmearDetectedEnergy(G4double energy) const;
+
     RunAction* fRunAction = nullptr;
     G4double fEdep = 0.;
     G4double fEdepGammaOrigin = 0.;

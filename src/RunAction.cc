@@ -55,6 +55,21 @@ void RunAction::ConfigureMessenger()
       "peakHalfWidth", "keV", fPeakHalfWidth,
       "Half-width of experimental peak window (use ~1-2 sigma)");
   widthCmd.SetStates(G4State_PreInit, G4State_Idle);
+
+  auto& resEnableCmd = fMessenger->DeclareProperty(
+      "applyResolutionSmearing", fApplyResolutionSmearing,
+      "Enable/disable Gaussian energy smearing for all deposited-energy spectra.");
+  resEnableCmd.SetStates(G4State_PreInit, G4State_Idle);
+
+  auto& resRefEnergyCmd = fMessenger->DeclarePropertyWithUnit(
+      "resolutionRefEnergy", "keV", fResolutionRefEnergy,
+      "Reference energy where resolution FWHM fraction is specified.");
+  resRefEnergyCmd.SetStates(G4State_PreInit, G4State_Idle);
+
+  auto& resRefFwhmCmd = fMessenger->DeclareProperty(
+      "resolutionRefFwhmFraction", fResolutionRefFwhmFraction,
+      "Detector resolution at reference energy as FWHM/E (e.g. 0.055 for 5.5%).");
+  resRefFwhmCmd.SetStates(G4State_PreInit, G4State_Idle);
 }
 
 void RunAction::BeginOfRunAction(const G4Run*)

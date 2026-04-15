@@ -58,6 +58,9 @@ class RunAction : public G4UserRunAction
     void CountWindowEvent(G4bool gammaOnlyPrimary, G4bool neutronOnlyPrimary, G4bool fullAmBePrimary);
     G4double GetPeakCenterKeV() const { return fPeakCenter / keV; }
     G4double GetPeakHalfWidthKeV() const { return fPeakHalfWidth / keV; }
+    G4double GetResolutionRefEnergy() const { return fResolutionRefEnergy; }
+    G4double GetResolutionRefFwhmFraction() const { return fResolutionRefFwhmFraction; }
+    G4bool GetApplyResolutionSmearing() const { return fApplyResolutionSmearing; }
 
     G4double fEdep = 0.;
 
@@ -67,6 +70,9 @@ class RunAction : public G4UserRunAction
     G4GenericMessenger* fMessenger = nullptr;
     G4double fPeakCenter = 4438. * keV;
     G4double fPeakHalfWidth = 120. * keV;
+    G4double fResolutionRefEnergy = 4438. * keV;
+    G4double fResolutionRefFwhmFraction = 0.055;
+    G4bool fApplyResolutionSmearing = true;
     G4int fGammaOnlyWindowCounts = 0;
     G4int fNeutronOnlyWindowCounts = 0;
     G4int fFullAmBeWindowCounts = 0;
