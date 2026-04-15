@@ -30,6 +30,7 @@
 #ifndef B1SteppingAction_h
 #define B1SteppingAction_h 1
 
+#include "G4SystemOfUnits.hh"
 #include "G4UserSteppingAction.hh"
 
 class G4LogicalVolume;

@@ -1,12 +1,8 @@
-CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/ActionInitialization.cc \
+CMakeFiles/NaI.dir/src/DetectorConstruction.cc.o: \
+ /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/DetectorConstruction.cc \
  /usr/include/stdc-predef.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/ActionInitialization.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserActionInitialization.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4SystemOfUnits.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Units/SystemOfUnits.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/EventAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserEventAction.hh \
+ /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/DetectorConstruction.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserDetectorConstruction.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ios.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Types.hh \
@@ -239,14 +235,124 @@ CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: \
  /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/PrimaryGeneratorAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4SystemOfUnits.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Units/SystemOfUnits.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Tubs.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GeomTypes.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GeomConfig.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Units/PhysicalConstants.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4CSGSolid.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VSolid.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/geomdefs.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ThreeVector.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/ThreeVector.h \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Utility/defs.h \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/ThreeVector.icc \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/RunAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserRunAction.hh \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/SteppingAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserSteppingAction.hh
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VSolid.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Polyhedron.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/HepPolyhedron.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4TwoVector.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/TwoVector.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/TwoVector.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Point3D.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Geometry/Point3D.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Geometry/BasicVector3D.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Normal3D.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Geometry/Normal3D.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Transform3D.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Geometry/Transform3D.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Geometry/Transform3D.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/Rotation.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/RotationInterfaces.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/LorentzVector.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/LorentzVector.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/AxisAngle.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/AxisAngle.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/RotationInterfaces.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/RotationX.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/RotationX.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/RotationY.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/RotationY.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/RotationZ.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/RotationZ.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/Rotation.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Geometry/Vector3D.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Visible.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Visible.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Tubs.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Box.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Box.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Cons.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Cons.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4LogicalVolume.hh \
+ /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h \
+ /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/backward/auto_ptr.h \
+ /usr/include/c++/11/pstl/glue_memory_defs.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Region.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GeomSplitter.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/geomwdefs.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AutoLock.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Threading.hh \
+ /usr/include/c++/11/condition_variable /usr/include/c++/11/future \
+ /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_futex.h \
+ /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/this_thread_sleep.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Region.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VPhysicalVolume.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4RotationMatrix.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VPhysicalVolume.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4LogicalVolume.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4NistManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ICRU90StoppingData.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Material.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Element.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ElementTable.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ElementVector.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4IonisParamElm.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Isotope.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4IsotopeVector.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4IonisParamMat.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4DensityEffectCalculator.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4MaterialPropertiesTable.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4MaterialPropertiesIndex.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4MaterialPropertyVector.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4PhysicsFreeVector.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4PhysicsVector.hh \
+ /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Log.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4PhysicsVectorType.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4PhysicsVector.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4MaterialTable.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4SandiaTable.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4OrderedTable.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4DataVector.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4DataVector.icc \
+ /usr/include/assert.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4NistElementBuilder.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4NistMaterialBuilder.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Pow.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Exp.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4PVPlacement.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Trd.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Trd.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Isotope.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Element.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Material.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VisAttributes.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/graphics_reps_defs.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Colour.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Color.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VisAttributes.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Colour.hh

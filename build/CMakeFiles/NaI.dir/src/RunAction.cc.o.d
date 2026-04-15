@@ -1,14 +1,10 @@
-CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/ActionInitialization.cc \
+CMakeFiles/NaI.dir/src/RunAction.cc.o: \
+ /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/RunAction.cc \
  /usr/include/stdc-predef.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/ActionInitialization.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserActionInitialization.hh \
+ /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/RunAction.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4SystemOfUnits.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Units/SystemOfUnits.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/EventAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserEventAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ios.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserRunAction.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Types.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GlobalConfig.hh \
  /usr/include/c++/11/complex \
@@ -183,6 +179,8 @@ CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: \
  /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/tls.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ios.hh \
  /usr/include/c++/11/iostream /usr/include/c++/11/algorithm \
  /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/bits/stl_algo.h \
@@ -239,14 +237,100 @@ CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: \
  /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/PrimaryGeneratorAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ThreeVector.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AnalysisManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GenericAnalysisManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ToolsAnalysisManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VAnalysisManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AnalysisManagerState.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AnalysisVerbose.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Threading.hh \
+ /usr/include/c++/11/condition_variable \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/future \
+ /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/bits/atomic_futex.h \
+ /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/this_thread_sleep.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AnalysisUtilities.hh \
+ /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/backward/auto_ptr.h \
+ /usr/include/c++/11/pstl/glue_memory_defs.h /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VTBaseHnManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4HnInformation.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4BinScheme.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Fcn.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VAnalysisManager.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4HnManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4BaseAnalysisManager.hh \
+ /usr/include/c++/11/set /usr/include/c++/11/bits/stl_set.h \
+ /usr/include/c++/11/bits/stl_multiset.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4NtupleBookingManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/ntuple_booking \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/cids \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/cid \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/typedefs \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/forit \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4NtupleBookingManager.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VNtupleManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VFileManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4BaseFileManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VTHnFileManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4TH1ToolsManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4THnToolsManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4THnManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4THnManager.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AutoLock.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4THnMessenger.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UImessenger.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UIdirectory.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UIcommand.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ApplicationState.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ThreeVector.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/ThreeVector.h \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Utility/defs.h \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/ThreeVector.icc \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/RunAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserRunAction.hh \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/SteppingAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserSteppingAction.hh
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UIparameter.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4THnToolsManager.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4THnMessenger.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Tokenizer.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4TH2ToolsManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4TH3ToolsManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4TP1ToolsManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4TP2ToolsManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/h1d \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/h1 \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/b1 \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/base_histo \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/histo_data \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/axes \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/axis \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/eqT \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/h2d \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/h2 \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/b2 \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/h3d \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/h3 \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/b3 \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/p1d \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/p1 \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/profile_data \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/p2d \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/tools/histo/p2 \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ToolsAnalysisManager.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GenericAnalysisManager.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GenericFileManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GenericFileManager.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GenericMessenger.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AnyMethod.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AnyType.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Run.hh

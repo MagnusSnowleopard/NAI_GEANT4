@@ -1,12 +1,9 @@
-CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/ActionInitialization.cc \
+CMakeFiles/NaI.dir/src/PrimaryGeneratorAction.cc.o: \
+ /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/src/PrimaryGeneratorAction.cc \
  /usr/include/stdc-predef.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/ActionInitialization.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserActionInitialization.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4SystemOfUnits.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Units/SystemOfUnits.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/EventAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserEventAction.hh \
+ /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/PrimaryGeneratorAction.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ThreeVector.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ios.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Types.hh \
@@ -239,14 +236,115 @@ CMakeFiles/NaI.dir/src/ActionInitialization.cc.o: \
  /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/PrimaryGeneratorAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ThreeVector.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/ThreeVector.h \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Utility/defs.h \
  /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Vector/ThreeVector.icc \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/RunAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserRunAction.hh \
- /home/rd/Packages/GEANT4/geant4-v11.3.0/examples/basic/NaI_AmBe/include/SteppingAction.hh \
- /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UserSteppingAction.hh
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/globals.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4SystemOfUnits.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Units/SystemOfUnits.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Event.hh \
+ /usr/include/c++/11/set /usr/include/c++/11/bits/stl_set.h \
+ /usr/include/c++/11/bits/stl_multiset.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/evtdefs.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Allocator.hh \
+ /usr/include/c++/11/cstddef \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AllocatorPool.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4PrimaryVertex.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4PrimaryParticle.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ThreeVector.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/pwdefs.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4HCofThisEvent.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VHitsCollection.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4DCofThisEvent.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VDigiCollection.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4TrajectoryContainer.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VTrajectory.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VUserEventInformation.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4GenericMessenger.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AnyMethod.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AnyType.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UIcommand.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ApplicationState.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UIparameter.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UImessenger.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4UIdirectory.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ParticleGun.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4VPrimaryGenerator.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ParticleDefinition.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4PDefManager.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4AutoLock.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4Threading.hh \
+ /usr/include/c++/11/condition_variable \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/future \
+ /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/bits/atomic_futex.h \
+ /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/this_thread_sleep.h \
+ /usr/include/c++/11/stdlib.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Units/PhysicalConstants.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ParticleDefinition.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ParticleMomentum.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ParticleTable.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ParticleTableIterator.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/G4ParticleTable.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/Randomize.hh \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/Randomize.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/DualRand.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandomEngine.h \
+ /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandomEngine.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/JamesRandom.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/MixMaxRng.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/MTwistEngine.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RanecuEngine.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RanluxEngine.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/Ranlux64Engine.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RanluxppEngine.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RanshiEngine.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandBinomial.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/Random.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/Random.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Utility/memory.h \
+ /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/backward/auto_ptr.h \
+ /usr/include/c++/11/pstl/glue_memory_defs.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandBinomial.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandBreitWigner.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandFlat.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Utility/thread_local.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandFlat.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandBreitWigner.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandChiSquare.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandChiSquare.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandExponential.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandExponential.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandExpZiggurat.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandBit.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandBit.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGamma.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGamma.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGauss.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGauss.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGaussQ.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGaussQ.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGaussZiggurat.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGeneral.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandGeneral.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandLandau.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandLandau.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandPoissonQ.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandPoisson.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandPoisson.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandPoissonQ.icc \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandStudentT.h \
+ /home/rd/Packages/GEANT4/geant_install/include/Geant4/CLHEP/Random/RandStudentT.icc

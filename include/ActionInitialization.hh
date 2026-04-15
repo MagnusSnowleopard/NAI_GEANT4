@@ -32,6 +32,7 @@
 
 #include "G4VUserActionInitialization.hh"
 
+#include "G4SystemOfUnits.hh"
 namespace NaI
 {
 

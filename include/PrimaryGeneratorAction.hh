@@ -35,6 +35,7 @@
 #include "globals.hh"
 #include <vector>
 #include <utility>
+#include "G4SystemOfUnits.hh"
 class G4ParticleGun;
 class G4Event;
 class G4GenericMessenger;

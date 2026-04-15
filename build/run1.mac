@@ -16,4 +16,4 @@
 /NaI/analysis/peakCenter 4438 keV
 /NaI/analysis/peakHalfWidth 120 keV
 
-/run/beamOn 500000
+/run/beamOn 5000000
